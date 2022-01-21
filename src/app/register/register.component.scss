@@ -1,0 +1,22 @@
+.cover-page {
+  width: 100vw;
+  height: 100vh;
+  background: url('../../assets/background/coverpage.jpg');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card {
+    background-color: #000B;
+    width: 60vw;
+  }
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}

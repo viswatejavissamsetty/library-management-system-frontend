@@ -1,1 +1,22 @@
-<h1>login works!</h1>
+<div class="cover-page" style="width: 100vw; height: 100vh">
+  <div class="card text-light">
+    <div class="card-header">
+      <h1 class="text-center">Login</h1>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="userid">User Id</label>
+        <input type="text" name="userId" id="userId" placeholder="Please enter userId or email" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Please enter password here"
+          class="form-control" />
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between align-items-center form-group">
+      <button class="btn btn-link" [routerLink]="['..', 'register']">Dont have account, Register Here.</button>
+      <button class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</div>

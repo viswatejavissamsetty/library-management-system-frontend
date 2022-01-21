@@ -1,1 +1,127 @@
-<p>register works!</p>
+<div class="cover-page" style="width: 100vw; height: 100vh">
+  <div class="card text-light">
+    <div class="card-header">
+      <h1 class="text-center">Register Account</h1>
+    </div>
+    <div class="card-body">
+      <!-- <div class="form-group">
+        <label for="userid">User Id</label>
+        <input type="text" name="userId" id="userId" placeholder="Please enter userId or email" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Please enter password here"
+          class="form-control" />
+      </div> -->
+      <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup" label="Basic Information">
+          <form [formGroup]="firstFormGroup" class="text-dark">
+            <div class="form-group">
+              <label for="idCardNumber">Your Id Number Please <span class="text-danger">*</span></label>
+              <input type="text" name="idCardNumber" id="idCardNumber" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="firstName">First Name <span class="text-danger">*</span></label>
+              <input type="text" name="firstName" id="firstName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="middleName">Middle Name (Optional)</label>
+              <input type="text" name="middleName" id="middleName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name <span class="text-danger">*</span></label>
+              <input type="text" name="lastName" id="lastName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="nickName">How can we call you? (Optional)</label>
+              <input type="text" name="nickName" id="nickName" class="form-control">
+            </div>
+            <div class="mt-4 d-flex justify-content-between">
+              <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Security Information">
+          <form [formGroup]="secondFormGroup" class="text-dark">
+            <div class="form-group">
+              <label for="email">Your Email Id Please <span class="text-danger">*</span></label>
+              <input type="text" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="mobileNumber">Contact Number <span class="text-danger">*</span></label>
+              <input type="text" name="mobileNumber" id="mobileNumber" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="password">Password <span class="text-danger">*</span></label>
+              <input type="password" name="password" id="password" class="form-control">
+            </div>
+            <div class="mt-4 d-flex justify-content-between">
+              <button mat-raised-button matStepperPrevious color="primary">Back</button>
+              <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Address Details">
+          <form [formGroup]="secondFormGroup" class="text-dark">
+            <div class="form-group">
+              <label for="addressLine1">Address Line 1 <span class="text-danger">*</span></label>
+              <input type="text" name="addressLine1" id="addressLine1" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="addressLine2">Address Line 2 (Optional)</label>
+              <input type="text" name="addressLine2" id="addressLine2" class="form-control">
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="city">City <span class="text-danger">*</span></label>
+                <input type="text" name="city" id="city" class="form-control">
+              </div>
+              <div class="col-6 form-group">
+                <label for="state">State <span class="text-danger">*</span></label>
+                <input type="text" name="state" id="state" class="form-control">
+              </div>
+              <div class="col-6 form-group">
+                <label for="village">Village <span class="text-danger">*</span></label>
+                <input type="text" name="village" id="village" class="form-control">
+              </div>
+              <div class="col-6 form-group">
+                <label for="pincode">Pincode <span class="text-danger">*</span></label>
+                <input type="text" name="pincode" id="pincode" class="form-control">
+              </div>
+              <div class="col-6 form-group">
+                <label for="country">Country <span class="text-danger">*</span></label>
+                <input type="text" name="country" id="country" class="form-control">
+              </div>
+              <div class="col-6 form-group">
+                <label for="branch">Branch <span class="text-danger">*</span></label>
+                <input type="text" name="branch" id="branch" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="dateOfBirth">Date Of Birth <span class="text-danger">*</span></label>
+              <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control">
+            </div>
+            <div class="mt-4 d-flex justify-content-between">
+              <button mat-raised-button matStepperPrevious color="primary">Back</button>
+              <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p class="text-dark">You are now done.</p>
+          <div class="mt-4 d-flex justify-content-between">
+            <button mat-raised-button matStepperPrevious color="primary">Back</button>
+            <button mat-raised-button (click)="stepper.reset()" color="warn">Reset</button>
+            <button mat-raised-button color="primary">Register</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+
+    </div>
+    <div class="card-footer text-center">
+      <button class="btn btn-link" [routerLink]="['..', 'login']">Already had an account Login Here.</button>
+      <!-- <button class="btn btn-primary">Login</button> -->
+    </div>
+  </div>
+</div>

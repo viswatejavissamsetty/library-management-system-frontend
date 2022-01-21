@@ -1,0 +1,15 @@
+{
+    "request" : {
+        "path": "test",
+        "query" : {
+            "bb" : 123
+        }
+    },
+    "response" : {
+        "status" : 200,
+        "data" : {
+            "message" : "you can see this because you used query 'bb=123' in your url",
+            "bb" : "bb : 123"
+        }
+    }
+}

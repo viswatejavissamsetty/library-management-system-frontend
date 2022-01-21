@@ -1,0 +1,13 @@
+{
+    "request" : {
+        "path": "test",
+        "method": "post"
+    },
+    "response" : {
+        "status" : 200,
+        "data" : {
+            "message" : "you can see this because you used post method",
+            "key" : "this is a post example"
+        }
+    }
+}

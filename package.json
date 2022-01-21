@@ -4,6 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:dev": "concurrently \"npm run start-mock-server\" \"npm run start-proxy-server\"",
+    "start-mock-server": "node node_modules/simple-json-replay-server/src/main.js --port=3000",
+    "start-proxy-server": "ng serve --proxy-config proxy.config.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -28,12 +31,14 @@
     "@angular/compiler-cli": "~13.1.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "concurrently": "^7.0.0",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "simple-json-replay-server": "^0.1.3",
     "typescript": "~4.5.2"
   }
 }

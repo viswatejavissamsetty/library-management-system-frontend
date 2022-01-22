@@ -1,0 +1,32 @@
+{
+  "request": {
+    "path": "users/new-user",
+    "method": "post"
+  },
+  "response": {
+    "status": 200,
+    "data": {
+      "_id": "16JR1A04H2",
+      "idCardNumber": "16JR1A04H2",
+      "firstName": "Viswa Teja",
+      "middleName": "Naga Venkata",
+      "lastName": "Vissamsetty",
+      "nickName": "Viswa",
+      "email": "viswateja994@gmail.com",
+      "password": "Test@123",
+      "mobileNumber": "+91 9441668210",
+      "addressLine1": "Door No: 5-143",
+      "addressLine2": "Near Ankamma Temple",
+      "city": "Guntur",
+      "state": "AP",
+      "village": "Prathipadu",
+      "pincode": "522019",
+      "country": "India",
+      "branch": "ECE",
+      "joiningDate": "2022-01-22T03:49:00.678Z",
+      "dateOfBirth": "1998-03-18T00:00:00.000Z",
+      "isLibrarian": false,
+      "__v": 0
+    }
+  }
+}

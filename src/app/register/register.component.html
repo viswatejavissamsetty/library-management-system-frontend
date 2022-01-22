@@ -4,56 +4,49 @@
       <h1 class="text-center">Register Account</h1>
     </div>
     <div class="card-body">
-      <!-- <div class="form-group">
-        <label for="userid">User Id</label>
-        <input type="text" name="userId" id="userId" placeholder="Please enter userId or email" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Please enter password here"
-          class="form-control" />
-      </div> -->
-      <mat-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup" label="Basic Information">
-          <form [formGroup]="firstFormGroup" class="text-dark">
+      <mat-stepper [linear]="isLinear" #stepper style="background-color: #FFF9;">
+        <mat-step [stepControl]="basicFormGroup" label="Basic Information">
+          <form [formGroup]="basicFormGroup" class="text-dark">
             <div class="form-group">
               <label for="idCardNumber">Your Id Number Please <span class="text-danger">*</span></label>
-              <input type="text" name="idCardNumber" id="idCardNumber" class="form-control">
+              <input type="text" name="idCardNumber" id="idCardNumber" class="form-control"
+                formControlName="idCardNumber">
             </div>
             <div class="form-group">
               <label for="firstName">First Name <span class="text-danger">*</span></label>
-              <input type="text" name="firstName" id="firstName" class="form-control">
+              <input type="text" name="firstName" id="firstName" class="form-control" formControlName="firstName">
             </div>
             <div class="form-group">
               <label for="middleName">Middle Name (Optional)</label>
-              <input type="text" name="middleName" id="middleName" class="form-control">
+              <input type="text" name="middleName" id="middleName" class="form-control" formControlName="middleName">
             </div>
             <div class="form-group">
               <label for="lastName">Last Name <span class="text-danger">*</span></label>
-              <input type="text" name="lastName" id="lastName" class="form-control">
+              <input type="text" name="lastName" id="lastName" class="form-control" formControlName="lastName">
             </div>
             <div class="form-group">
               <label for="nickName">How can we call you? (Optional)</label>
-              <input type="text" name="nickName" id="nickName" class="form-control">
+              <input type="text" name="nickName" id="nickName" class="form-control" formControlName="nickName">
             </div>
             <div class="mt-4 d-flex justify-content-between">
               <button mat-raised-button matStepperNext color="primary">Next</button>
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup" label="Security Information">
-          <form [formGroup]="secondFormGroup" class="text-dark">
+        <mat-step [stepControl]="securityInformationFormGroup" label="Security Information">
+          <form [formGroup]="securityInformationFormGroup" class="text-dark">
             <div class="form-group">
               <label for="email">Your Email Id Please <span class="text-danger">*</span></label>
-              <input type="text" name="email" id="email" class="form-control">
+              <input type="text" name="email" id="email" class="form-control" formControlName="email">
             </div>
             <div class="form-group">
               <label for="mobileNumber">Contact Number <span class="text-danger">*</span></label>
-              <input type="text" name="mobileNumber" id="mobileNumber" class="form-control">
+              <input type="text" name="mobileNumber" id="mobileNumber" class="form-control"
+                formControlName="mobileNumber">
             </div>
             <div class="form-group">
               <label for="password">Password <span class="text-danger">*</span></label>
-              <input type="password" name="password" id="password" class="form-control">
+              <input type="password" name="password" id="password" class="form-control" formControlName="password">
             </div>
             <div class="mt-4 d-flex justify-content-between">
               <button mat-raised-button matStepperPrevious color="primary">Back</button>
@@ -61,45 +54,48 @@
             </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup" label="Address Details">
-          <form [formGroup]="secondFormGroup" class="text-dark">
+        <mat-step [stepControl]="addressDetailsFormGroup" label="Address Details">
+          <form [formGroup]="addressDetailsFormGroup" class="text-dark">
             <div class="form-group">
               <label for="addressLine1">Address Line 1 <span class="text-danger">*</span></label>
-              <input type="text" name="addressLine1" id="addressLine1" class="form-control">
+              <input type="text" name="addressLine1" id="addressLine1" class="form-control"
+                formControlName="addressLine1">
             </div>
             <div class="form-group">
               <label for="addressLine2">Address Line 2 (Optional)</label>
-              <input type="text" name="addressLine2" id="addressLine2" class="form-control">
+              <input type="text" name="addressLine2" id="addressLine2" class="form-control"
+                formControlName="addressLine2">
             </div>
             <div class="row">
               <div class="col-6 form-group">
                 <label for="city">City <span class="text-danger">*</span></label>
-                <input type="text" name="city" id="city" class="form-control">
+                <input type="text" name="city" id="city" class="form-control" formControlName="city">
               </div>
               <div class="col-6 form-group">
                 <label for="state">State <span class="text-danger">*</span></label>
-                <input type="text" name="state" id="state" class="form-control">
+                <input type="text" name="state" id="state" class="form-control" formControlName="state">
               </div>
               <div class="col-6 form-group">
                 <label for="village">Village <span class="text-danger">*</span></label>
-                <input type="text" name="village" id="village" class="form-control">
+                <input type="text" name="village" id="village" class="form-control" formControlName="village">
               </div>
               <div class="col-6 form-group">
                 <label for="pincode">Pincode <span class="text-danger">*</span></label>
-                <input type="text" name="pincode" id="pincode" class="form-control">
+                <input type="text" name="pincode" id="pincode" class="form-control" formControlName="pincode">
               </div>
               <div class="col-6 form-group">
                 <label for="country">Country <span class="text-danger">*</span></label>
-                <input type="text" name="country" id="country" class="form-control">
+                <input type="text" name="country" id="country" class="form-control" formControlName="country">
               </div>
               <div class="col-6 form-group">
                 <label for="branch">Branch <span class="text-danger">*</span></label>
-                <input type="text" name="branch" id="branch" class="form-control">
+                <input type="text" name="branch" id="branch" class="form-control" formControlName="branch">
               </div>
-            </div>
-            <div class="form-group">
-              <label for="dateOfBirth">Date Of Birth <span class="text-danger">*</span></label>
-              <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control">
+              <div class="form-group">
+                <label for="dateOfBirth">Date Of Birth <span class="text-danger">*</span></label>
+                <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control"
+                  formControlName="dateOfBirth">
+              </div>
             </div>
             <div class="mt-4 d-flex justify-content-between">
               <button mat-raised-button matStepperPrevious color="primary">Back</button>
@@ -107,21 +103,142 @@
             </div>
           </form>
         </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p class="text-dark">You are now done.</p>
+        <mat-step label="Done">
+          <h1 class="text-center">Your Data</h1>
+          <div class="row" style="max-height: 45vh; overflow-y: scroll;">
+            <div class="col-12 text-center">Basic Information</div>
+            <div class="col-12">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">ID Number</div>
+                    <div class="col">{{basicFormGroup.value.idCardNumber}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">First Name</div>
+                    <div class="col">{{basicFormGroup.value.firstName}}</div>
+                  </div>
+                </a>
+                <a href="#" *ngIf="basicFormGroup.value.middleName"
+                  class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Middle Name</div>
+                    <div class="col">{{basicFormGroup.value.middleName}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Last Name</div>
+                    <div class="col">{{basicFormGroup.value.lastName}}</div>
+                  </div>
+                </a>
+                <a href="#" *ngIf="basicFormGroup.value.nickName"
+                  class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Nick Name</div>
+                    <div class="col">{{basicFormGroup.value.nickName}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 text-center">Security Information</div>
+            <div class="col-12">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Email</div>
+                    <div class="col">{{securityInformationFormGroup.value.email}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Mobile Number</div>
+                    <div class="col">{{securityInformationFormGroup.value.mobileNumber}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 text-center">Address Information</div>
+            <div class="col-12">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Address Line 1</div>
+                    <div class="col">{{addressDetailsFormGroup.value.addressLine1}}</div>
+                  </div>
+                </a>
+                <a href="#" *ngIf="addressDetailsFormGroup.value.addressLine2"
+                  class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Address Line 2</div>
+                    <div class="col">{{addressDetailsFormGroup.value.addressLine2}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">City</div>
+                    <div class="col">{{addressDetailsFormGroup.value.city}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">State</div>
+                    <div class="col">{{addressDetailsFormGroup.value.state}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Village</div>
+                    <div class="col">{{addressDetailsFormGroup.value.village}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Pincode</div>
+                    <div class="col">{{addressDetailsFormGroup.value.pincode}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Country</div>
+                    <div class="col">{{addressDetailsFormGroup.value.country}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Branch</div>
+                    <div class="col">{{addressDetailsFormGroup.value.branch}}</div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                  <div class="row">
+                    <div class="col">Date of Birth</div>
+                    <div class="col">{{addressDetailsFormGroup.value.dateOfBirth}}</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 d-flex mt-3 justify-content-center align-items-center">
+              <div class="form-group">
+                <label for="confirm text-dark">
+                  <input type="checkbox" name="confirm" id="confirm" [(ngModel)]="confirm"> I am accepting to register here.
+                </label>
+              </div>
+            </div>
+          </div>
           <div class="mt-4 d-flex justify-content-between">
             <button mat-raised-button matStepperPrevious color="primary">Back</button>
             <button mat-raised-button (click)="stepper.reset()" color="warn">Reset</button>
-            <button mat-raised-button color="primary">Register</button>
+            <button mat-raised-button color="primary" [disabled]="!confirm" (click)="registerUser()">Register</button>
           </div>
         </mat-step>
       </mat-stepper>
 
     </div>
     <div class="card-footer text-center">
-      <button class="btn btn-link" [routerLink]="['..', 'login']">Already had an account Login Here.</button>
-      <!-- <button class="btn btn-primary">Login</button> -->
+      <button class="btn btn-link text-light" [routerLink]="['..', 'login']">Already had an account Login Here.</button>
     </div>
   </div>
 </div>

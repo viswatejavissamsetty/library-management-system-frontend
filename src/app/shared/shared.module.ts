@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserProfileService } from './services/user-profile.service';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  imports: [
-    
-  ],
+  imports: [],
   providers: [UserProfileService],
-  exports: [CommonModule, ReactiveFormsModule],
+  exports: [CommonModule, ReactiveFormsModule, HttpClientModule, FormsModule],
 })
 export class SharedModule {
   static forRoot() {
     return {
       ngModule: SharedModule,
-      providers: [
-        UserProfileService
-      ],
+      providers: [UserProfileService],
     };
- }
+  }
 }

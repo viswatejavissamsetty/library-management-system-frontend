@@ -1,28 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserProfileService } from '../shared/services/user-profile.service';
+import { RegisterService } from './services/register.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-
   isLinear = true; // TODO: Need to change it to true
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  
-  constructor(private _formBuilder: FormBuilder) { 
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+  basicFormGroup: FormGroup;
+  securityInformationFormGroup: FormGroup;
+  addressDetailsFormGroup: FormGroup;
+
+  confirm = false;
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private registerService: RegisterService,
+    private userProfileService: UserProfileService,
+    private router: Router
+  ) {
+    this.basicFormGroup = this._formBuilder.group({
+      idCardNumber: ['', Validators.required],
+      firstName: ['', Validators.required],
+      middleName: [''],
+      lastName: ['', Validators.required],
+      nickName: [''],
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
+    this.securityInformationFormGroup = this._formBuilder.group({
+      email: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+    this.addressDetailsFormGroup = this._formBuilder.group({
+      addressLine1: ['', Validators.required],
+      addressLine2: [''],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      village: ['', Validators.required],
+      pincode: ['', Validators.required],
+      country: ['', Validators.required],
+      branch: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
+  registerUser() {
+    this.registerService
+      .registerUser({
+        ...this.basicFormGroup.value,
+        ...this.addressDetailsFormGroup.value,
+        ...this.securityInformationFormGroup.value,
+      })
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.userProfileService.setUserData(data);
+          this.router.navigate(['..', 'login']);
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
+  }
 }

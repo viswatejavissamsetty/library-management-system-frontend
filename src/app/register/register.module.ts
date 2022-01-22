@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
+import { RegisterService } from './services/register.service';
 
 @NgModule({
   declarations: [RegisterComponent],
   imports: [
-    SharedModule,
     RegisterRoutingModule,
+    SharedModule,
     MatStepperModule,
     MatFormFieldModule,
     MatButtonModule
   ],
+  providers: [RegisterService]
 })
 export class RegisterModule {}

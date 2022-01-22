@@ -29,7 +29,11 @@ export class LoginComponent implements OnInit {
           this.loginService.getUserProfile().subscribe(
             (data) => {
               this.loginService.setUserData(data);
-              this.router.navigate(['..', 'users'])
+              if(data.isLibrarian){
+                this.router.navigate(['..', 'librarian'])
+              }else{
+                this.router.navigate(['', 'users'])
+              }
             },
             (error) => {
               console.error(error);

@@ -76,12 +76,7 @@
               "browserTarget": "library-management-system-frontend:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "host": "librarymanangementsystem.com",
-            "port": 80,
-            "disableHostCheck": true
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

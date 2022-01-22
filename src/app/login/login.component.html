@@ -4,19 +4,22 @@
       <h1 class="text-center">Login</h1>
     </div>
     <div class="card-body">
-      <div class="form-group">
-        <label for="userid">User Id</label>
-        <input type="text" name="userId" id="userId" placeholder="Please enter userId or email" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Please enter password here"
-          class="form-control" />
-      </div>
+      <form [formGroup]="loginData">
+        <div class="form-group">
+          <label for="userid">User Id</label>
+          <input type="text"  id="userId" placeholder="Please enter userId or email"
+            class="form-control" formControlName="username"/>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password"  id="password" placeholder="Please enter password here"
+            class="form-control" formControlName="password"/>
+        </div>
+      </form>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center form-group">
       <button class="btn btn-link" [routerLink]="['..', 'register']">Dont have account, Register Here.</button>
-      <button class="btn btn-primary">Login</button>
+      <button class="btn btn-primary" (click)="login()">Login</button>
     </div>
   </div>
 </div>

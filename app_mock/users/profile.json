@@ -1,0 +1,29 @@
+{
+  "request": {
+    "path": "users/profile",
+    "method": "get"
+  },
+  "response": {
+    "status": 200,
+    "data": {
+      "idCardNumber": "16JR1A04H2",
+      "firstName": "viswa",
+      "middleName": "",
+      "lastName": "Vissamsetty",
+      "nickName": "Viswa",
+      "email": "viswa@gmail.com",
+      "mobileNumber": "9441668210",
+      "addressLine1": "My Address Line 1",
+      "addressLine2": "",
+      "city": "Guntur",
+      "state": "AP",
+      "village": "prathipadu",
+      "pincode": "522190",
+      "country": "India",
+      "branch": "ECE",
+      "joiningDate": "2016-08-11T00:00:00.000Z",
+      "dateOfBirth": "1999-11-18T00:00:00.000Z",
+      "isLibrarian": false
+    }
+  }
+}

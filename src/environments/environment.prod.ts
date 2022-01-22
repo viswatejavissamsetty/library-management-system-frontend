@@ -1,3 +1,6 @@
+import urls from "./securedurls";
+
 export const environment = {
-  production: true
+  production: true,
+  urls: urls
 };

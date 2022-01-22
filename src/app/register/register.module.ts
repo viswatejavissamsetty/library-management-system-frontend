@@ -8,14 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [RegisterComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     RegisterRoutingModule,
     MatStepperModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule
   ],

@@ -1,6 +1,6 @@
 {
   "request": {
-    "path": "users/new-user",
+    "path": "api/users/new-user",
     "method": "post"
   },
   "response": {

@@ -1,6 +1,6 @@
 {
   "request": {
-    "path": "users/profile",
+    "path": "api/users/profile",
     "method": "get"
   },
   "response": {

@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "start:dev": "concurrently \"npm run start-mock-server\" \"npm run start-proxy-server\"",
-    "start-proxy-server": "ng serve --proxy-config proxy.config.js",
-    "start-mock-server": "node node_modules/simple-json-replay-server/src/main.js --port=3000",
+    "start:proxy-server": "ng serve --proxy-config proxy.config.js",
+    "start:mock-server": "node node_modules/simple-json-replay-server/src/main.js --port=3000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

@@ -1,6 +1,6 @@
 {
   "request": {
-    "path": "books/all-books",
+    "path": "api/books/all-books",
     "method": "get"
   },
   "response": {

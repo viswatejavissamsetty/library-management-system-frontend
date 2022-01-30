@@ -1,6 +1,6 @@
 {
   "request": {
-    "path": "books/book",
+    "path": "api/books/book",
     "method": "get",
     "query": {
       "bookId": "61e44c447661606d9e0b42fe"

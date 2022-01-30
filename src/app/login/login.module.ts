@@ -5,13 +5,20 @@ import { LoginComponent } from './login.component';
 import { LoginService } from './services/login.service';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileService } from '../shared/services/user-profile.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeadersInterceptor } from '../headers.interceptor';
 
 @NgModule({
   declarations: [LoginComponent],
-  imports: [
-    LoginRoutingModule,
-    SharedModule
+  imports: [LoginRoutingModule, SharedModule],
+  providers: [
+    LoginService,
+    UserProfileService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true,
+    },
   ],
-  providers: [LoginService, UserProfileService]
 })
 export class LoginModule {}

@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterService } from './services/register.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeadersInterceptor } from '../headers.interceptor';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -16,8 +18,15 @@ import { RegisterService } from './services/register.service';
     SharedModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  providers: [RegisterService]
+  providers: [
+    RegisterService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class RegisterModule {}

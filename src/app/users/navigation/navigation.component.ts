@@ -14,9 +14,11 @@ export class NavigationComponent implements OnInit {
   constructor(private usersProfileService: UserProfileService, private router: Router, private aRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.usersProfileService.getUserData());
-    
-    this.isLibrarian = this.usersProfileService.getUserData().isLibrarian;
+    this.usersProfileService.getUserData().subscribe(
+      userData => {
+        this.isLibrarian = userData.isLibrarian;
+      }
+    );
   }
 
   logoutUser() {

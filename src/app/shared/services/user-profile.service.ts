@@ -1,4 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
+const profile = environment.urls.profile;
 
 type UserProfileDataType = {
   idCardNumber: string;
@@ -25,15 +30,20 @@ type UserProfileDataType = {
   providedIn: 'root',
 })
 export class UserProfileService {
-  userProfileData!:UserProfileDataType;
+  userProfileData!: UserProfileDataType;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   setUserData(data: any) {
     this.userProfileData = data;
+    console.log(this.userProfileData);
   }
 
-  getUserData(): UserProfileDataType{
-    return this.userProfileData;
+  getUserData(): Observable<UserProfileDataType> {
+    return <Observable<UserProfileDataType>>this.http.get(profile);
   }
+
+  // getUserData(): UserProfileDataType{
+  //   return this.userProfileData;
+  // }
 }

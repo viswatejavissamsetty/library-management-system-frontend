@@ -15,10 +15,10 @@ export class HeadersInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-        authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
+        authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
       }
-    })
+    });
     return next.handle(request);
   }
 }

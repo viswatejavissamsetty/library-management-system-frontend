@@ -10,7 +10,10 @@ export class UsersComponent implements OnInit {
   constructor(private usersProfileService: UserProfileService) {}
 
   ngOnInit(): void {
-    const userData = this.usersProfileService.getUserData();
-    console.log(userData);
+    this.usersProfileService.getUserData().subscribe(
+      userData => {
+        console.log(userData);
+      }
+    );
   }
 }

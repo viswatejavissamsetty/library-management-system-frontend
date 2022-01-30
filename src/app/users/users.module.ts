@@ -8,19 +8,24 @@ import { UserProfileService } from '../shared/services/user-profile.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LandingComponent } from './landing/landing.component';
 import { BookingsComponent } from './bookings/bookings.component';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeadersInterceptor } from '../headers.interceptor';
 
 @NgModule({
   declarations: [
     UsersComponent,
     NavigationComponent,
     LandingComponent,
-    BookingsComponent
+    BookingsComponent,
   ],
-  imports: [
-    SharedModule,
-    UsersRoutingModule
+  imports: [SharedModule, UsersRoutingModule],
+  providers: [
+    UserProfileService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true,
+    },
   ],
-  providers: [UserProfileService]
 })
-export class UsersModule { }
+export class UsersModule {}

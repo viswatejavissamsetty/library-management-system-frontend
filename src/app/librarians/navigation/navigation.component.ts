@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserProfileService } from 'src/app/shared/services/user-profile.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+  styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
   isLibrarian: boolean = false;

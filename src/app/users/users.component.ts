@@ -12,7 +12,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.usersProfileService.getUserData().subscribe(
       userData => {
-        console.log(userData);
+        // console.log(userData);
       }
     );
   }

@@ -5,14 +5,20 @@ import { LibrariansRoutingModule } from './librarians-routing.module';
 import { LibrariansComponent } from './librarians.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeadersInterceptor } from '../headers.interceptor';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LandingComponent } from './landing/landing.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    LibrariansComponent
+    LibrariansComponent,
+    NavigationComponent,
+    LandingComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     LibrariansRoutingModule
   ],
   providers: [

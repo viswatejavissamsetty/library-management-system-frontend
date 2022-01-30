@@ -1,0 +1,24 @@
+{
+  "request": {
+    "path": "books/new-book",
+    "method": "post"
+  },
+  "response": {
+    "status": 200,
+    "data": {
+      "bookTitle": "Book 14",
+      "bookDescription": "Book 1 Description 1",
+      "authorName": "Author 2",
+      "authorDescription": "Author 2",
+      "imagePath": "images/books/CSE/invoice1643517661077.pdf",
+      "price": 450,
+      "fine": 1,
+      "totalNumberOfBooks": 20,
+      "availableNumberOfBooks": 20,
+      "ratings": null,
+      "category": "CSE",
+      "_id": "61f616dda013a89240ae3ff8",
+      "__v": 0
+    }
+  }
+}

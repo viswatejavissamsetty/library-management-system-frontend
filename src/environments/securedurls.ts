@@ -27,55 +27,27 @@ const baseUrl = 'http://localhost:3000/';
 
 export const urls = {
   // auth
-  auth: 'auth/login',
+  auth: 'api/auth/login',
   // Users
-  profile: '/users/profile',
-  newUser: '/users/new-user',
-  getUsersData: '/users/get-users-data',
-  changePassword: '/users/change-password',
+  profile: 'api/users/profile',
+  newUser: 'api/users/new-user',
+  getUsersData: 'api/users/get-users-data',
+  changePassword: 'api/users/change-password',
   // Books
-  allBooks: 'books/all-books',
-  book: 'books/book',
-  newBook: 'books/new-book',
+  allBooks: 'api/books/all-books',
+  book: 'api/books/book',
+  newBook: 'api/books/new-book',
   // Book Orders
-  newBookOrder: 'book-orders/new-request',
-  getAllUserPlannedBooks: 'book-orders/get-all-user-planned-books',
-  getAllPlannedBooks: 'book-orders/get-all-planned-books',
-  getAllUserTakenBooks: 'book-orders/get-all-user-taken-books',
-  getAllTakenBooks: 'book-orders/get-all-taken-books',
-  takeBook: 'book-orders/take-book',
-  returnBook: 'book-orders/return-book',
-  cancelBook: 'book-orders/cancel-book',
+  newBookOrder: 'api/book-orders/new-request',
+  getAllUserPlannedBooks: 'api/book-orders/get-all-user-planned-books',
+  getAllPlannedBooks: 'api/book-orders/get-all-planned-books',
+  getAllUserTakenBooks: 'api/book-orders/get-all-user-taken-books',
+  getAllTakenBooks: 'api/book-orders/get-all-taken-books',
+  takeBook: 'api/book-orders/take-book',
+  returnBook: 'api/book-orders/return-book',
+  cancelBook: 'api/book-orders/cancel-book',
   // Notifications
-  notifications: 'notifications',
+  notifications: 'api/notifications',
 };
 
 export default urls;
-
-// TODO: Remove me later
-// auth
-export const auth = baseUrl + 'auth/login';
-
-// Users
-export const profile = baseUrl + '/users/profile';
-export const newUser = baseUrl + '/users/new-user';
-export const getUsersData = baseUrl + '/users/get-users-data';
-export const changePassword = baseUrl + '/users/change-password';
-
-// Books
-export const allBooks = baseUrl + 'books/all-books';
-export const book = baseUrl + 'books/book';
-export const newBook = baseUrl + 'books/new-book';
-
-// Book Orders
-export const newBookOrder = 'book-orders/new-request';
-export const getAllUserPlannedBooks = 'book-orders/get-all-user-planned-books';
-export const getAllPlannedBooks = 'book-orders/get-all-planned-books';
-export const getAllUserTakenBooks = 'book-orders/get-all-user-taken-books';
-export const getAllTakenBooks = 'book-orders/get-all-taken-books';
-export const takeBook = 'book-orders/take-book';
-export const returnBook = 'book-orders/return-book';
-export const cancelBook = 'book-orders/cancel-book';
-
-// Notifications
-export const notifications = 'notifications';

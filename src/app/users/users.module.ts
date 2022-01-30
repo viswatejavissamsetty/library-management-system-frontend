@@ -5,11 +5,13 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileService } from '../shared/services/user-profile.service';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
   declarations: [
-    UsersComponent
+    UsersComponent,
+    NavigationComponent
   ],
   imports: [
     SharedModule,

@@ -1,0 +1,27 @@
+{
+  "request": {
+    "path": "books/book",
+    "method": "get",
+    "query": {
+      "bookId": "61e44c447661606d9e0b42fe"
+    }
+  },
+  "response": {
+    "status": 200,
+    "data": {
+      "_id": "61e44c447661606d9e0b42fe",
+      "bookTitle": "Book 1",
+      "bookDescription": "Book 1 Description 1",
+      "authorName": "Author 1",
+      "authorDescription": "Author 1 Description 1",
+      "imagePath": "/books/ECE/book1.jpg",
+      "price": 300,
+      "fine": 2,
+      "totalNumberOfBooks": 100,
+      "availableNumberOfBooks": 25,
+      "ratings": 4.5,
+      "category": "ECE",
+      "__v": 0
+    }
+  }
+}

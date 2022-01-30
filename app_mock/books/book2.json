@@ -15,7 +15,7 @@
       "price": 300,
       "fine": 2,
       "totalNumberOfBooks": 17,
-      "availableNumberOfBooks": 15,
+      "availableNumberOfBooks": 0,
       "ratings": 4.5,
       "category": "ECE",
       "__v": 0

@@ -1,5 +1,9 @@
-<div class="row g-3">
+<div class="row g-3" *ngIf="books.length">
     <div *ngFor="let book of books; let i = index;" class="col-3">
         <app-book-item [book]="book"></app-book-item>
     </div>
+</div>
+
+<div class="d-flex m-5 justify-content-center align-items-center" *ngIf="books.length === 0">
+    <h1 class="text-center">No Books</h1>
 </div>

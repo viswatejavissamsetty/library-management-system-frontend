@@ -23,4 +23,16 @@ export class LandingComponent implements OnInit {
   search() {
     console.log('clicked, search value is -> ', this.searchValue);
   }
+
+  filterOnCategory(category: string) {
+    this.filteredBooks = this.books.filter(
+      (book) => book.category === category
+    );
+  }
+
+  filterWithRatings() {
+    this.filteredBooks = this.books
+      .filter((book) => book.ratings >= 4)
+      .sort((a, b) => b.ratings - a.ratings);
+  }
 }

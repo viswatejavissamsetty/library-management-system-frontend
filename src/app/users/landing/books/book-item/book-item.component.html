@@ -7,9 +7,12 @@
     <h5 class="card-title">{{book.bookTitle}}</h5>
     <h6>{{book.authorName}}</h6>
     <div class="d-flex justify-content-between">
-      <small [class]="colorIndication">
+      <small [class]="colorIndication" *ngIf="book.availableNumberOfBooks !== 0">
         Number of books: {{book.availableNumberOfBooks}}/{{book.totalNumberOfBooks}}
       </small>
+      <div *ngIf="book.availableNumberOfBooks === 0">
+        <div class="text-danger" >Out Of Stock</div>
+      </div>
       <div *ngIf="book.ratings">
         {{book.ratings}}
         <img src="https://img.icons8.com/color/96/000000/christmas-star.png" width="25" height="25" />

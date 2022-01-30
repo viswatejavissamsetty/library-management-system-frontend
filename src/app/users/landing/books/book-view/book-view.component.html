@@ -30,6 +30,9 @@
           <div>
             <table class="table">
               <tbody>
+                <tr *ngIf="bookDetails.availableNumberOfBooks === 0" class="bg-danger">
+                  <th colspan="2" class="text-center">Out Of Stock</th>
+                </tr>
                 <tr>
                   <th scope="row">Price</th>
                   <td>{{bookDetails.price | currency:'INR'}}</td>
@@ -57,15 +60,15 @@
         </div>
 
         <div class="col-12">
-            <div class="row">
-                <div class="col">
-                    <qr-code [value]="bookDetails._id" size="150" errorCorrectionLevel="M"></qr-code>
-                </div>
-                <div class="col form-group">
-                    <button class="btn btn-primary form-control my-3">Take Book</button>
-                    <a class="btn btn-outline-dark form-control my-3" [routerLink]="['..','..', 'landing']">Go Back</a>
-                </div>
+          <div class="row">
+            <div class="col">
+              <qr-code [value]="bookDetails._id" size="150" errorCorrectionLevel="M"></qr-code>
             </div>
+            <div class="col form-group">
+              <button class="btn btn-primary form-control my-3">Take Book</button>
+              <a class="btn btn-outline-dark form-control my-3" [routerLink]="['..','..', 'landing']">Go Back</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

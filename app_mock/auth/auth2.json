@@ -1,0 +1,16 @@
+{
+    "request" : {
+        "path": "api/auth/login",
+        "method": "post",
+        "data": {
+            "username": "16JR1A04H3",
+            "password": "Test@123"
+        }
+    },
+    "response" : {
+        "status" : 200,
+        "data" : {
+            "access_token": "user 2 secret key"
+        }
+    }
+}

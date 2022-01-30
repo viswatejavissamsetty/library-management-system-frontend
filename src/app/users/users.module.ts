@@ -6,12 +6,16 @@ import { UsersComponent } from './users.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileService } from '../shared/services/user-profile.service';
 import { NavigationComponent } from './navigation/navigation.component';
+import { LandingComponent } from './landing/landing.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    NavigationComponent
+    NavigationComponent,
+    LandingComponent,
+    BookingsComponent
   ],
   imports: [
     SharedModule,

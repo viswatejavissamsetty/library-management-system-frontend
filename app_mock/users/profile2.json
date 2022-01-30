@@ -1,18 +1,21 @@
 {
   "request": {
     "path": "api/users/profile",
-    "method": "get"
+    "method": "get",
+    "headers": {
+      "authorization": "Bearer user 2 secret key"
+    }
   },
   "response": {
     "status": 200,
     "data": {
-      "idCardNumber": "16JR1A04H2",
-      "firstName": "viswa",
+      "idCardNumber": "16JR1A04H3",
+      "firstName": "Upendra",
       "middleName": "",
-      "lastName": "Vissamsetty",
-      "nickName": "Viswa",
-      "email": "viswa@gmail.com",
-      "mobileNumber": "9441668210",
+      "lastName": "Y",
+      "nickName": "Uppu",
+      "email": "uppu@gmail.com",
+      "mobileNumber": "1234567890",
       "addressLine1": "My Address Line 1",
       "addressLine2": "",
       "city": "Guntur",

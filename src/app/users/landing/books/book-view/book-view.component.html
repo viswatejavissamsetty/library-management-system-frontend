@@ -1,0 +1,73 @@
+<div class="container mt-3 border p-2" *ngIf="bookDetails">
+  <div class="row">
+    <div class="col-6">
+      <img [src]="bookDetails.imagePath" alt="bookDetails.bookTitle" class="img-fluid" style="aspect-ratio: 1;">
+    </div>
+    <div class="col-6">
+      <div class="row ">
+
+        <!-- <pre>
+                    {{bookDetails | json}}
+                </pre> -->
+        <div class="col-12">
+          <h2 class="text-center">
+            {{bookDetails.bookTitle}}
+            <h4 class="text-center">({{bookDetails.authorName}})</h4>
+          </h2>
+        </div>
+
+        <div class="col-12 my-1">
+          <div class="p-2 mark bg-info rounded">About Book: <br>{{bookDetails.bookDescription}}</div>
+        </div>
+
+        <div class="col-12 my-1">
+          <div class="p-2 bg-warning rounded">About Author: <br>{{bookDetails.authorDescription}}</div>
+        </div>
+
+        <div class="col-12 my-2">
+          <h3 class="text-center">Book Details</h3>
+
+          <div>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Price</th>
+                  <td>{{bookDetails.price | currency:'INR'}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Fine</th>
+                  <td>{{bookDetails.fine | currency:'INR'}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Available Number Of Books</th>
+                  <td>{{bookDetails.availableNumberOfBooks}}/{{bookDetails.totalNumberOfBooks}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Ratings</th>
+                  <td>{{bookDetails.ratings}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Category</th>
+                  <td>{{bookDetails.category}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col">
+                    <qr-code [value]="bookDetails._id" size="150" errorCorrectionLevel="M"></qr-code>
+                </div>
+                <div class="col form-group">
+                    <button class="btn btn-primary form-control my-3">Take Book</button>
+                    <a class="btn btn-outline-dark form-control my-3" [routerLink]="['..','..', 'landing']">Go Back</a>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

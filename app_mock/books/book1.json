@@ -14,7 +14,7 @@
       "bookDescription": "Book 1 Description 1",
       "authorName": "Author 1",
       "authorDescription": "Author 1 Description 1",
-      "imagePath": "/books/ECE/book1.jpg",
+      "imagePath": "images/books/CSE/Capture1642735103825.png",
       "price": 300,
       "fine": 2,
       "totalNumberOfBooks": 100,

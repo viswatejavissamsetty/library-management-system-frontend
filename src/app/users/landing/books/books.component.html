@@ -1,0 +1,5 @@
+<div class="row g-3">
+    <div *ngFor="let book of books; let i = index;" class="col-3">
+        <app-book-item [book]="book"></app-book-item>
+    </div>
+</div>

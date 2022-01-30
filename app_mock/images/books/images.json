@@ -1,0 +1,12 @@
+{
+    "request" : {
+        "path": "images/books/CSE/Capture1642735103825.png"
+    },
+    "response" : {
+        "status" : 200,
+        "file" : {
+            "path" : "Capture1642735103825.png",
+            "downloadFilename" : "Capture1642735103825.png"
+        }
+    }
+}

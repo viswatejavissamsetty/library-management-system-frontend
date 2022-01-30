@@ -1,0 +1,24 @@
+{
+  "request": {
+    "path": "api/books/book",
+    "method": "get"
+  },
+  "response": {
+    "status": 200,
+    "data": {
+      "_id": "61e44c497661606d9e0b4304",
+      "bookTitle": "Book 3",
+      "bookDescription": "Book 1 Description 1",
+      "authorName": "Author 1",
+      "authorDescription": "Author 1 Description 1",
+      "imagePath": "images/books/CSE/Capture1642735103825.png",
+      "price": 300,
+      "fine": 2,
+      "totalNumberOfBooks": 17,
+      "availableNumberOfBooks": 15,
+      "ratings": 4.5,
+      "category": "ECE",
+      "__v": 0
+    }
+  }
+}

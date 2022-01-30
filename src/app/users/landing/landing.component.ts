@@ -10,6 +10,7 @@ export class LandingComponent implements OnInit {
   searchValue: string = '';
   books: BookType[] = [];
   filteredBooks: BookType[] = [];
+  categories: string[] = [];
 
   constructor(private booksService: BooksService) {}
 
@@ -17,6 +18,11 @@ export class LandingComponent implements OnInit {
     this.booksService.getAllBooks().subscribe((books) => {
       this.books = books;
       this.filteredBooks = books;
+      this.categories = books
+        .map((book) => book.category)
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        }).sort();
     });
   }
 

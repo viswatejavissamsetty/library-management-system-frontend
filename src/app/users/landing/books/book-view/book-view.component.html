@@ -4,11 +4,7 @@
       <img [src]="bookDetails.imagePath" alt="bookDetails.bookTitle" class="img-fluid" style="aspect-ratio: 1;">
     </div>
     <div class="col-6">
-      <div class="row ">
-
-        <!-- <pre>
-                    {{bookDetails | json}}
-                </pre> -->
+      <div class="row">
         <div class="col-12">
           <h2 class="text-center">
             {{bookDetails.bookTitle}}
@@ -25,7 +21,7 @@
         </div>
 
         <div class="col-12 my-2">
-          <h3 class="text-center">Book Details</h3>
+          <h3 class="text-center rounded-pill bg-light border" style="width: auto;">Book Details</h3>
 
           <div>
             <table class="table">

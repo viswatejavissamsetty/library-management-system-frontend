@@ -10,9 +10,10 @@ export interface Notification {
   readonly _id: string;
   readonly userId: string;
   readonly message: string;
-  readonly status: 'READ' | 'UNREAD';
+  status: 'READ' | 'UNREAD';
   readonly level: 'HIGH' | 'MEDIUM' | 'LOW';
-  readonly createdAt: Date;
+  readonly createdAt: Date | string;
+  checked: boolean;
 }
 
 @Injectable({

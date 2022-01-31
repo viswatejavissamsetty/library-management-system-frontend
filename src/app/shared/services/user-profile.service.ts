@@ -34,11 +34,7 @@ export class UserProfileService {
   private userId: string = '';
 
   constructor(private http: HttpClient) {
-    console.log(1);
-    
     this.getUserData().subscribe((userProfile) => {
-    console.log(2);
-
       this.userId = userProfile.idCardNumber;
       this.userProfileData = userProfile;
     });
@@ -54,8 +50,6 @@ export class UserProfileService {
   }
 
   getUserId(): string {
-    console.log(3);
-
     return this.userId;
   }
 }

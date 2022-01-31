@@ -9,7 +9,7 @@ import { NotificationsService } from './services/notifications.service';
 
 @NgModule({
   declarations: [NotificationsComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   providers: [UserProfileService, NotificationsService],
   exports: [
     CommonModule,

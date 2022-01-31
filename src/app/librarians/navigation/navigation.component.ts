@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { UserProfileService } from 'src/app/shared/services/user-profile.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { UserProfileService } from 'src/app/shared/services/user-profile.service
 export class NavigationComponent implements OnInit {
   isLibrarian: boolean = false;
   userName: string = 'User';
+  notificationCount: number = 0;
 
   constructor(
     private usersProfileService: UserProfileService,
+    private notificationService: NotificationsService,
     private router: Router,
     private aRoute: ActivatedRoute
   ) {}
@@ -26,6 +29,12 @@ export class NavigationComponent implements OnInit {
         this.userName = userData.firstName + ' ' + userData.lastName;
       }
     });
+
+    setTimeout(()=>{
+      this.notificationService.getNumberOfUnReadNotifications().subscribe(data=>{
+        this.notificationCount = data;
+      });
+    }, 1000)
   }
 
   logoutUser() {

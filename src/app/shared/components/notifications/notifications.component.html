@@ -1,6 +1,11 @@
-<!-- <pre>
-    {{notifications | json}}
-</pre> -->
+<div class="d-flex justify-content-between form-group container mt-2">
+  <button class="btn btn-primary" (click)="markAllNotificationsTo('READ')">Mark All as Read</button>
+  <button class="btn btn-primary" (click)="markSelectedNotificationsTo('READ')">Mark Selected as Read</button>
+  <button class="btn btn-primary" (click)="markAllNotificationsTo('UNREAD')">Mark All as Unread</button>
+  <button class="btn btn-primary" (click)="markSelectedNotificationsTo('UNREAD')">Mark Selected as Unread</button>
+  <button class="btn btn-danger" (click)="deleteAll()">Delete All</button>
+  <button class="btn btn-danger" (click)="deleteAllSelected()">Delete Selcted</button>
+</div>
 
 <div class="container mt-3">
 
@@ -11,8 +16,18 @@
           'list-group-item-warning': notification.level === 'MEDIUM',
           'list-group-item-light': notification.level === 'LOW'
         }">
-      {{notification.message}}
-      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+      <div>
+        {{notification.message}}
+      </div>
+      <div>
+        at {{notification.createdAt}}
+      </div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24"
+          *ngIf="notification.status === 'READ'">
+          <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" /></svg>
+        <input class="form-check-input me-1" type="checkbox" [(ngModel)]="notification.checked" [value]="" aria-label="...">
+      </div>
     </li>
   </ul>
 

@@ -1,0 +1,41 @@
+{
+  "request": {
+    "path": "api/notifications",
+    "method": "get",
+    "query": {
+      "userId": "16JR1A04H2"
+    }
+  },
+  "response": {
+    "status": 200,
+    "data": [
+      {
+        "_id": "61ea28283aa378a9bd3046ec",
+        "userId": "16JR1A04H2",
+        "message": "Your book Book 1 has been registered for Plan",
+        "status": "UNREAD",
+        "createdAt": "2022-01-31T03:27:29.335Z",
+        "level": "MEDIUM",
+        "__v": 0
+      },
+      {
+        "_id": "61ea29cb3aa378a9bd304724",
+        "userId": "16JR1A04H2",
+        "message": "Your book Book 1 has been Taken from library by Viswa",
+        "status": "UNREAD",
+        "createdAt": "2022-01-30T03:27:49.335Z",
+        "level": "HIGH",
+        "__v": 0
+      },
+      {
+        "_id": "61ea29cd3aa378a9bd30472a",
+        "userId": "16JR1A04H2",
+        "message": "Your book Book 1 has been Taken from library by Uppu",
+        "status": "UNREAD",
+        "createdAt": "2022-01-28T09:27:29.335Z",
+        "level": "LOW",
+        "__v": 0
+      }
+    ]
+  }
+}

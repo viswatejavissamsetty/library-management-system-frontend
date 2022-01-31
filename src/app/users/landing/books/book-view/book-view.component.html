@@ -61,7 +61,7 @@
               <qr-code [value]="bookDetails._id" size="150" errorCorrectionLevel="M"></qr-code>
             </div>
             <div class="col form-group">
-              <button class="btn btn-primary form-control my-3">Take Book</button>
+              <button class="btn btn-primary form-control my-3" (click)="takeBook()">Take Book</button>
               <a class="btn btn-outline-dark form-control my-3" [routerLink]="['..','..', 'landing']">Go Back</a>
             </div>
           </div>

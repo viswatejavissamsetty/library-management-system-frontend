@@ -15,6 +15,7 @@ import { BooksService } from './services/books.service';
 import { BookItemComponent } from './landing/books/book-item/book-item.component';
 import { BookViewComponent } from './landing/books/book-view/book-view.component';
 import { QrCodeModule } from 'ng-qrcode';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { QrCodeModule } from 'ng-qrcode';
     BookItemComponent,
     BookViewComponent,
   ],
-  imports: [SharedModule, UsersRoutingModule, QrCodeModule],
+  imports: [SharedModule, UsersRoutingModule, QrCodeModule, MatSnackBarModule],
   providers: [
     UserProfileService,
     BooksService,

@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserProfileService } from 'src/app/shared/services/user-profile.service';
 import { environment } from 'src/environments/environment';
 
 const allBooks = environment.urls.allBooks;
 const book = environment.urls.book;
+const planToTakeBook = environment.urls.newBookOrder;
 
 export interface BookType {
   _id: string;
@@ -26,7 +28,10 @@ export interface BookType {
   providedIn: 'root',
 })
 export class BooksService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private userProfileService: UserProfileService
+  ) {}
 
   getAllBooks(): Observable<BookType[]> {
     return <Observable<BookType[]>>this.http.get(allBooks);
@@ -38,5 +43,10 @@ export class BooksService {
         bookId,
       },
     });
+  }
+
+  planToTakeBook(bookId: string): Observable<any> {
+    const userId = this.userProfileService.getUserId();
+    return <Observable<any>>this.http.post(planToTakeBook, { bookId, userId });
   }
 }

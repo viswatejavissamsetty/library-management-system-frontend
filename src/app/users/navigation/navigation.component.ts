@@ -30,11 +30,11 @@ export class NavigationComponent implements OnInit {
       }
     });
 
-    setTimeout(()=>{
+    setInterval(()=>{
       this.notificationService.getNumberOfUnReadNotifications().subscribe(data=>{
         this.notificationCount = data;
       });
-    }, 1000)
+    }, 5000)
   }
 
   logoutUser() {

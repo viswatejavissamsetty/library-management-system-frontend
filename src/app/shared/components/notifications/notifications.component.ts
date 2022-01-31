@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
 import {
   Notification,
   NotificationsService,
@@ -15,6 +15,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
   notifications: Notification[] = [];
 
   constructor(private notificationService: NotificationsService) {}
+
 
   ngOnInit(): void {}
 
@@ -33,7 +34,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
             createdAt: moment(notification.createdAt).calendar(),
             checked: false,
           };
-        }))
+        }).reverse())
     );
   }
 

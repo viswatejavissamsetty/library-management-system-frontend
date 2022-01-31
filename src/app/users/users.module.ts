@@ -16,6 +16,7 @@ import { BookItemComponent } from './landing/books/book-item/book-item.component
 import { BookViewComponent } from './landing/books/book-view/book-view.component';
 import { QrCodeModule } from 'ng-qrcode';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BookingService } from './services/booking.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   providers: [
     UserProfileService,
     BooksService,
+    BookingService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeadersInterceptor,

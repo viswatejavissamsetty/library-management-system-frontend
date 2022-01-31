@@ -22,12 +22,21 @@ export class LandingComponent implements OnInit {
         .map((book) => book.category)
         .filter((value, index, self) => {
           return self.indexOf(value) === index;
-        }).sort();
+        })
+        .sort();
     });
   }
 
   search() {
-    console.log('clicked, search value is -> ', this.searchValue);
+    const regex = new RegExp(this.searchValue, 'i');
+    this.filteredBooks = this.books.filter((book) => {
+      return (
+        regex.test(book.authorName) ||
+        regex.test(book._id) ||
+        regex.test(book.category) ||
+        regex.test(book.bookTitle)
+      );
+    });
   }
 
   filterOnCategory(category: string) {

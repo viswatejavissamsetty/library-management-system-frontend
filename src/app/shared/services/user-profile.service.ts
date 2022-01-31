@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -31,8 +31,18 @@ type UserProfileDataType = {
 })
 export class UserProfileService {
   userProfileData!: UserProfileDataType;
+  private userId: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log(1);
+    
+    this.getUserData().subscribe((userProfile) => {
+    console.log(2);
+
+      this.userId = userProfile.idCardNumber;
+      this.userProfileData = userProfile;
+    });
+  }
 
   setUserData(data: any) {
     this.userProfileData = data;
@@ -43,7 +53,9 @@ export class UserProfileService {
     return <Observable<UserProfileDataType>>this.http.get(profile);
   }
 
-  // getUserData(): UserProfileDataType{
-  //   return this.userProfileData;
-  // }
+  getUserId(): string {
+    console.log(3);
+
+    return this.userId;
+  }
 }

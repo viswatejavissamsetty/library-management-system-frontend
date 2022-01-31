@@ -1,0 +1,13 @@
+{
+  "request": {
+    "path": "api/notifications",
+    "method": "patch",
+    "body": {
+      "status": "UNREAD"
+    }
+  },
+  "response": {
+    "status": 200,
+    "data": {}
+  }
+}

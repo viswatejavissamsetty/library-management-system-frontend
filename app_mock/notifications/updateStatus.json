@@ -1,0 +1,16 @@
+{
+  "request": {
+    "path": "api/notifications",
+    "method": "patch",
+    "query": {
+      "notificationId": "61ea28283aa378a9bd3046ec"
+    },
+    "body": {
+      "status": "READ"
+    }
+  },
+  "response": {
+    "status": 200,
+    "data": {}
+  }
+}

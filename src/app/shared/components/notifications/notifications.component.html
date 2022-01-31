@@ -1,0 +1,19 @@
+<!-- <pre>
+    {{notifications | json}}
+</pre> -->
+
+<div class="container mt-3">
+
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-action d-flex justify-content-between"
+      *ngFor="let notification of notifications; let i = index" [ngClass]="{
+          'list-group-item-danger': notification.level === 'HIGH',
+          'list-group-item-warning': notification.level === 'MEDIUM',
+          'list-group-item-light': notification.level === 'LOW'
+        }">
+      {{notification.message}}
+      <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+    </li>
+  </ul>
+
+</div>

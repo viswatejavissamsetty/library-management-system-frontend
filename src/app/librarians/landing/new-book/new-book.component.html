@@ -66,6 +66,7 @@
               <label for="image">Book Image <span class="text-danger">*</span></label>
               <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" formControlName="image"
                 class="form-control" aria-describedby="newBook" (change)="addImage($event)">
+              <!-- <img [src]="newBookFormData.value.image" alt="No Image attached" width="200px" height="300px" *ngIf="newBookFormData.value.image"> -->
             </div>
           </form>
         </div>

@@ -7,17 +7,17 @@
     </button>
     <a class="navbar-brand ml-5" routerLink="landing">Hi {{userName}}</a>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="landing">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="bookings">Bookings</a>
-        </li>
         <li class="nav-item" *ngIf="isLibrarian">
-          <a class="nav-link" routerLink="../librarian">Librarian</a>
+          <a class="nav-link custom-block" routerLink="../librarian" [ngClass]="{'active': navigationEndVal === 4}">Library Portal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="notifications">
+          <a class="nav-link active" routerLink="landing" [ngClass]="{'active': navigationEndVal === 1}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="bookings" [ngClass]="{'active': navigationEndVal === 2}">Bookings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="notifications" [ngClass]="{'active': navigationEndVal === 3}">
             Notifications
             <span class="top-0 start-100 translate-middle badge rounded-pill bg-danger" style="z-index: -100;" *ngIf="notificationCount">
               {{notificationCount}}

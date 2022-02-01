@@ -1,15 +1,18 @@
 <ul class="nav justify-content-center nav-tabs mt-2">
   <li class="nav-item">
-    <a class="nav-link active" [routerLink]="['bookings']">Bookings</a>
+    <a class="nav-link" [ngClass]="{'active': selectedTab === 1}" [routerLink]="['bookings']"
+      (click)="changeSelectedTab(1)">Bookings</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLink]="['returns']">Returns</a>
+    <a class="nav-link" [ngClass]="{'active': selectedTab === 2}" [routerLink]="['returns']"
+      (click)="changeSelectedTab(2)">Returns</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLink]="['new-book']">New Book</a>
+    <a class="nav-link" [ngClass]="{'active': selectedTab === 3}" [routerLink]="['new-book']"
+      (click)="changeSelectedTab(3)">New Book</a>
   </li>
 </ul>
 
 <div class="container">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

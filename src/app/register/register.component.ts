@@ -61,10 +61,15 @@ export class RegisterComponent implements OnInit {
         (data) => {
           console.log(data);
           this.userProfileService.setUserData(data);
+          this.userProfileService.openSnackBar(
+            'Succesfully registered account',
+            'SUCCESS'
+          );
           this.router.navigate(['..', 'login']);
         },
         (err) => {
           console.error(err);
+          this.userProfileService.openSnackBar(err.error.message, 'DANGER');
         }
       );
   }

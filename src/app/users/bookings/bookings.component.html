@@ -8,6 +8,7 @@
             <th scope="col">S No</th>
             <th scope="col">Book Name</th>
             <th scope="col">Planned</th>
+            <th scope="col">Need To Take with in</th>
             <th scope="col">Cancel</th>
           </tr>
         </thead>
@@ -16,6 +17,7 @@
             <th scope="row">{{i + 1}}</th>
             <td>{{plannedBook.bookTitle}}</td>
             <td>{{plannedBook.planedDate}}</td>
+            <td>{{plannedBook.returnedDate}}</td>
             <td>
               <button class="btn btn-outline-danger" (click)="cancelBook(plannedBook._id)">Cancel</button>
             </td>

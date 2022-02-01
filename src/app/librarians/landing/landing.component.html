@@ -1,1 +1,15 @@
-<p>landing works!</p>
+<ul class="nav justify-content-center nav-tabs mt-2">
+  <li class="nav-item">
+    <a class="nav-link active" [routerLink]="['bookings']">Bookings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['returns']">Returns</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['new-book']">New Book</a>
+  </li>
+</ul>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { UserProfileService } from 'src/app/shared/services/user-profile.service';
 import { environment } from 'src/environments/environment';
@@ -30,7 +31,8 @@ export interface BookType {
 export class BooksService {
   constructor(
     private http: HttpClient,
-    private userProfileService: UserProfileService
+    private userProfileService: UserProfileService,
+    private _snackBar: MatSnackBar
   ) {}
 
   getAllBooks(): Observable<BookType[]> {
@@ -48,5 +50,19 @@ export class BooksService {
   planToTakeBook(bookId: string): Observable<any> {
     const userId = this.userProfileService.getUserId();
     return <Observable<any>>this.http.post(planToTakeBook, { bookId, userId });
+  }
+
+  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
+    const pannelClasses = {
+      DANGER: 'bg-danger',
+      SUCCESS: 'bg-success',
+      NORMAL: '',
+    };
+    this._snackBar.open(message, 'dismiss', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: pannelClasses[level],
+    });
   }
 }

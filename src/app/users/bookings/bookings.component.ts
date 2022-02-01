@@ -32,6 +32,11 @@ export class BookingsComponent implements OnInit {
         ).subscribe((books) => {
           books.forEach((book, index) => {
             this.plannedBooks[index].bookTitle = book.bookTitle;
+            this.plannedBooks[index].returnedDate = moment(
+              this.plannedBooks[index].planedDate
+            )
+              .add({ days: 1 })
+              .calendar();
             this.plannedBooks[index].planedDate = moment(
               this.plannedBooks[index].planedDate
             ).calendar();
@@ -60,7 +65,7 @@ export class BookingsComponent implements OnInit {
               this.takenBooks[index].fine =
                 this.takenBooks[index].fine *
                 moment().diff(this.takenBooks[index].returnedDate, 'days');
-            }else{
+            } else {
               this.takenBooks[index].fine = 0;
             }
             // this.takenBooks[index].fine = (moment() - moment(this.takenBooks[index].returnedDate)).calendar();
@@ -73,11 +78,16 @@ export class BookingsComponent implements OnInit {
   cancelBook(id: string) {
     this.bookingService.cancelBook(id).subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
+        this.bookingService.openSnackBar(
+          `Book cancelled succesfully`,
+          'SUCCESS'
+        );
         this.fetchAllPlannedBooks();
       },
       (err) => {
         console.error(err);
+        this.bookingService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }

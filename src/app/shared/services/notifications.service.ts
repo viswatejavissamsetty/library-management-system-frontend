@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -22,7 +23,8 @@ export interface Notification {
 export class NotificationsService {
   constructor(
     private http: HttpClient,
-    private userProfileService: UserProfileService
+    private userProfileService: UserProfileService,
+    private _snackBar: MatSnackBar
   ) {}
 
   getAllNotifications(): Observable<Notification[]> {
@@ -54,5 +56,19 @@ export class NotificationsService {
     return <Observable<any>>(
       this.http.delete(notifications, { params: { notificationId } })
     );
+  }
+
+  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
+    const pannelClasses = {
+      DANGER: 'bg-danger',
+      SUCCESS: 'bg-success',
+      NORMAL: '',
+    };
+    this._snackBar.open(message, 'dismiss', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: pannelClasses[level],
+    });
   }
 }

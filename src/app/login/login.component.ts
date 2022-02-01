@@ -11,7 +11,11 @@ import { LoginService } from './services/login.service';
 export class LoginComponent implements OnInit {
   loginData: FormGroup;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+  ) {
     this.loginData = fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -29,10 +33,10 @@ export class LoginComponent implements OnInit {
           this.loginService.getUserProfile().subscribe(
             (data) => {
               this.loginService.setUserData(data);
-              if(data.isLibrarian){
-                this.router.navigate(['..', 'librarian'])
-              }else{
-                this.router.navigate(['', 'users'])
+              if (data.isLibrarian) {
+                this.router.navigate(['..', 'librarian']);
+              } else {
+                this.router.navigate(['', 'users']);
               }
             },
             (error) => {
@@ -42,10 +46,18 @@ export class LoginComponent implements OnInit {
         },
         (err) => {
           console.error(err);
+          this.loginService.openSnackBar(
+            'Invalid Creadentials, Please check username or password',
+            'DANGER'
+          );
         }
       );
     } else {
-      console.log('Invalid form data');
+      console.error('Invalid form data');
+      this.loginService.openSnackBar(
+        'Invalid Form data, Please check data once',
+        'DANGER'
+      );
     }
   }
 }

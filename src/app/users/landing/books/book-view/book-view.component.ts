@@ -15,8 +15,7 @@ export class BookViewComponent implements OnInit {
   constructor(
     private booksService: BooksService,
     private aRoute: ActivatedRoute,
-    private router: Router,
-    private _snackBar: MatSnackBar
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,21 +28,13 @@ export class BookViewComponent implements OnInit {
   takeBook() {
     this.booksService.planToTakeBook(this.bookDetails._id).subscribe(
       (data) => {
-        this.router.navigateByUrl('users/bookings')
-        this.openSnackBar("Book taken succesfully");
+        this.booksService.openSnackBar('Book taken succesfully', 'SUCCESS');
+        this.router.navigateByUrl('users/bookings');
       },
       (err) => {
         console.error(err);
-        this.openSnackBar(err.error.message)
+        this.booksService.openSnackBar(err.error.message, 'DANGER');
       }
     );
-  }
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
   }
 }

@@ -6,6 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeadersInterceptor } from '../headers.interceptor';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotificationsService } from './services/notifications.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [NotificationsComponent],
@@ -16,6 +18,7 @@ import { NotificationsService } from './services/notifications.service';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    MatSnackBarModule,
     NotificationsComponent,
   ],
 })

@@ -1,0 +1,82 @@
+<div class="container mt-1">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="text-center font-monospace my-3">Add new Book In Library</h1>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6 offset-3">
+          <form [formGroup]="newBookFormData" class="row">
+            <!-- Book -->
+            <div class="form-group col-12">
+              <label for="bookTitle">Book Name <span class="text-danger">*</span></label>
+              <input type="text" id="bookTitle" formControlName="bookTitle" class="form-control"
+                aria-describedby="newBook">
+            </div>
+            <div class="form-group col-12">
+              <label for="bookDescription">Book Description <span class="text-danger">*</span></label>
+              <textarea name="bookDescription" id="bookDescription" cols="30" rows="3" formControlName="bookDescription"
+                aria-describedby="newBook" class="form-control"></textarea>
+            </div>
+            <!-- Author -->
+            <div class="form-group col-12">
+              <label for="authorName">Author Name <span class="text-danger">*</span></label>
+              <input type="text" id="authorName" formControlName="authorName" class="form-control"
+                aria-describedby="newBook">
+            </div>
+            <div class="form-group col-12">
+              <label for="authorDescription">Author Description <span class="text-danger">*</span></label>
+              <textarea name="authorDescription" id="authorDescription" cols="30" rows="3" aria-describedby="newBook"
+                formControlName="authorDescription" class="form-control"></textarea>
+            </div>
+            <!-- parameters -->
+            <div class="form-group col-12">
+              <label for="price">Price in Rupees <span class="text-danger">*</span></label>
+              <input type="number" id="price" formControlName="price" class="form-control" min="0"
+                aria-describedby="newBook">
+            </div>
+            <div class="form-group col-12">
+              <label for="fine">Fine in Rupees <span class="text-danger">*</span> -
+                ({{newBookFormData.value.fine}})</label>
+              <input type="range" class="form-range" min="0" max="10" step="1" id="fine" formControlName="fine"
+                aria-describedby="newBook">
+              <!-- <input type="number" id="fine" formControlName="fine" class="form-control" min="0" max="10"> -->
+            </div>
+            <div class="form-group col-12">
+              <label for="totalNumberOfBooks">Total number of Books <span class="text-danger">*</span></label>
+              <input type="number" id="totalNumberOfBooks" formControlName="totalNumberOfBooks" class="form-control"
+                aria-describedby="newBook" min="0">
+            </div>
+            <div class="form-group col-12">
+              <label for="category">Category <span class="text-danger">*</span></label>
+              <select name="category" id="category" formControlName="category" class="form-control"
+                aria-describedby="newBook">
+                <option *ngFor="let category of categoryOptions" [value]=[category]>{{category}}</option>
+              </select>
+            </div>
+            <div class="form-group col-12">
+              <label for="ratings">Ratings <span class="text-danger">*</span> -
+                ({{newBookFormData.value.ratings}})</label>
+              <!-- <input type="number" id="ratings" formControlName="ratings" class="form-control" min="0" step="0.1" max="5"> -->
+              <input type="range" class="form-range" min="0" max="5" step="0.1" id="ratings" formControlName="ratings"
+                aria-describedby="newBook">
+            </div>
+            <!-- image -->
+            <div class="form-group col-12">
+              <label for="image">Book Image <span class="text-danger">*</span></label>
+              <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" formControlName="image"
+                class="form-control" aria-describedby="newBook" (change)="addImage($event)">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" (click)="submitForm()" [disabled]="newBookFormData.invalid">
+          Add Book
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

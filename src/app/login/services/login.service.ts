@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { UserProfileService } from 'src/app/shared/services/user-profile.service';
 import { environment } from '../../../environments/environment';
@@ -34,7 +35,8 @@ type UserProfileDataType = {
 export class LoginService {
   constructor(
     private http: HttpClient,
-    private sharedService: UserProfileService
+    private sharedService: UserProfileService,
+    private _snackBar: MatSnackBar
   ) {}
 
   login(body: {
@@ -55,5 +57,19 @@ export class LoginService {
 
   setUserData(userdata: any) {
     this.sharedService.setUserData(userdata);
+  }
+
+  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
+    const pannelClasses = {
+      DANGER: 'bg-danger',
+      SUCCESS: 'bg-success',
+      NORMAL: '',
+    };
+    this._snackBar.open(message, 'dismiss', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: pannelClasses[level],
+    });
   }
 }

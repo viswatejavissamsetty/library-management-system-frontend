@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
     this.usersProfileService.getUserData().subscribe(
       userData => {
         // console.log(userData);
+        this.usersProfileService.setUserData(userData);
       }
     );
   }

@@ -1,3 +1,4 @@
+import { LibrarianService } from './services/librarian.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,18 +9,23 @@ import { HeadersInterceptor } from '../headers.interceptor';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LandingComponent } from './landing/landing.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { BookingsComponent } from './landing/bookings/bookings.component';
+import { ReturnsComponent } from './landing/returns/returns.component';
+import { NewBookComponent } from './landing/new-book/new-book.component';
 
 @NgModule({
   declarations: [
     LibrariansComponent,
     NavigationComponent,
-    LandingComponent
+    LandingComponent,
+    BookingsComponent,
+    ReturnsComponent,
+    NewBookComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    LibrariansRoutingModule
+    LibrariansRoutingModule,
   ],
   providers: [
     {
@@ -27,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
       useClass: HeadersInterceptor,
       multi: true,
     },
+    LibrarianService
   ]
 })
 export class LibrariansModule { }

@@ -16,7 +16,6 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
 
   constructor(private notificationService: NotificationsService) {}
 
-
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
@@ -28,13 +27,15 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
   fetchNotifications() {
     this.notificationService.getAllNotifications().subscribe(
       (notifications) =>
-        (this.notifications = notifications.map((notification) => {
-          return {
-            ...notification,
-            createdAt: moment(notification.createdAt).calendar(),
-            checked: false,
-          };
-        }).reverse())
+        (this.notifications = notifications
+          .map((notification) => {
+            return {
+              ...notification,
+              createdAt: moment(notification.createdAt).calendar(),
+              checked: false,
+            };
+          })
+          .reverse())
     );
   }
 
@@ -46,9 +47,19 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
           notification._id
         )
       )
-    ).subscribe((data) => {
-      this.fetchNotifications();
-    });
+    ).subscribe(
+      (data) => {
+        this.notificationService.openSnackBar(
+          `Succesfully marked ${data.length} notifications as ${status}`,
+          'SUCCESS'
+        );
+        this.fetchNotifications();
+      },
+      (err) => {
+        console.error(err);
+        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+      }
+    );
   }
 
   markSelectedNotificationsTo(status: 'READ' | 'UNREAD') {
@@ -61,9 +72,19 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
             notification._id
           )
         )
-    ).subscribe((data) => {
-      this.fetchNotifications();
-    });
+    ).subscribe(
+      (data) => {
+        this.notificationService.openSnackBar(
+          `Succesfully marked ${data.length} notifications as ${status}`,
+          'SUCCESS'
+        );
+        this.fetchNotifications();
+      },
+      (err) => {
+        console.error(err);
+        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+      }
+    );
   }
 
   deleteAllSelected() {
@@ -73,9 +94,19 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
         .map((notification) =>
           this.notificationService.deleteNotification(notification._id)
         )
-    ).subscribe((data) => {
-      this.fetchNotifications();
-    });
+    ).subscribe(
+      (data) => {
+        this.notificationService.openSnackBar(
+          `Succesfully deleted ${data.length} notifications`,
+          'SUCCESS'
+        );
+        this.fetchNotifications();
+      },
+      (err) => {
+        console.error(err);
+        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+      }
+    );
   }
 
   deleteAll() {
@@ -83,8 +114,18 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       this.notifications.map((notification) =>
         this.notificationService.deleteNotification(notification._id)
       )
-    ).subscribe((data) => {
-      this.fetchNotifications();
-    });
+    ).subscribe(
+      (data) => {
+        this.notificationService.openSnackBar(
+          `Succesfully deleted ${data.length} notifications`,
+          'SUCCESS'
+        );
+        this.fetchNotifications();
+      },
+      (err) => {
+        console.error(err);
+        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+      }
+    );
   }
 }

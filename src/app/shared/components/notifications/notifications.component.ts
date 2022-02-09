@@ -16,7 +16,11 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
 
   constructor(private notificationService: NotificationsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setTimeout(()=>{
+      this.notificationService.notificationFetchControl.next(true);
+    }, 500);
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -49,6 +53,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       )
     ).subscribe(
       (data) => {
+        this.notificationService.notificationFetchControl.next(true);
         this.notificationService.openSnackBar(
           `Succesfully marked ${data.length} notifications as ${status}`,
           'SUCCESS'
@@ -74,6 +79,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
         )
     ).subscribe(
       (data) => {
+        this.notificationService.notificationFetchControl.next(true);
         this.notificationService.openSnackBar(
           `Succesfully marked ${data.length} notifications as ${status}`,
           'SUCCESS'
@@ -96,6 +102,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
         )
     ).subscribe(
       (data) => {
+        this.notificationService.notificationFetchControl.next(true);
         this.notificationService.openSnackBar(
           `Succesfully deleted ${data.length} notifications`,
           'SUCCESS'
@@ -116,6 +123,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       )
     ).subscribe(
       (data) => {
+        this.notificationService.notificationFetchControl.next(true);
         this.notificationService.openSnackBar(
           `Succesfully deleted ${data.length} notifications`,
           'SUCCESS'

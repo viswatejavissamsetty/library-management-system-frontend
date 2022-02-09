@@ -1,8 +1,6 @@
 import { LibrarianService } from './../../services/librarian.service';
 import { Component, OnInit } from '@angular/core';
 import { BookingModel } from 'src/app/users/services/booking.service';
-import { zip } from 'rxjs';
-import * as moment from 'moment';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
@@ -29,17 +27,17 @@ export class BookingsComponent implements OnInit {
         this.filteredBookings = books.sort((book1, book2) =>
           book1.userId < book2.userId ? 1 : -1
         );
-        zip(
-          this.bookings.map((PBook) =>
-            this.librarianService.getBook(PBook.bookId)
-          )
-        ).subscribe((books) => {
-          books.forEach((book, index) => {
-            this.filteredBookings[index].bookTitle = book.bookTitle;
-          });
-        });
+        // zip(
+        //   this.bookings.map((PBook) =>
+        //     this.librarianService.getBook(PBook.bookId)
+        //   )
+        // ).subscribe((books) => {
+        //   books.forEach((book, index) => {
+        //     this.filteredBookings[index].bookTitle = book.bookTitle;
+        //   });
+        // });
       });
-    }, 1500);
+    }, 500);
   }
 
   filterData() {

@@ -21,7 +21,7 @@
         <tr *ngFor="let booking of filteredBookings; let i = index" [ngClass]="{'table-danger': booking.fine > 0}">
           <th scope="row">{{i+1}}</th>
           <td>{{booking.userId}}</td>
-          <td>{{booking.bookTitle}}</td>
+          <td>{{booking.bookName}}</td>
           <td>{{booking.takenDate}}</td>
           <td>{{booking.returnedDate}}</td>
           <td [ngClass]="{'bg-danger': booking.fine > 0}">{{booking.fine}}</td>

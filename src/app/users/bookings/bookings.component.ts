@@ -1,9 +1,7 @@
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
-import { zip } from 'rxjs';
 import { BookingModel, BookingService } from '../services/booking.service';
-import { BooksService } from '../services/books.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-bookings',
@@ -16,7 +14,6 @@ export class BookingsComponent implements OnInit {
 
   constructor(
     private bookingService: BookingService,
-    private booksService: BooksService,
     private notificationsService: NotificationsService
   ) {}
 
@@ -29,52 +26,30 @@ export class BookingsComponent implements OnInit {
     setTimeout(() => {
       this.bookingService.getAllPlannedBooks().subscribe((plannedBooks) => {
         this.plannedBooks = plannedBooks.reverse();
-        zip(
-          plannedBooks.map((PBook) => this.booksService.getBook(PBook.bookId))
-        ).subscribe((books) => {
-          books.forEach((book, index) => {
-            this.plannedBooks[index].bookTitle = book.bookTitle;
-            this.plannedBooks[index].returnedDate = moment(
-              this.plannedBooks[index].planedDate
-            )
-              .add({ days: 1 })
-              .calendar();
-            this.plannedBooks[index].planedDate = moment(
-              this.plannedBooks[index].planedDate
-            ).calendar();
-          });
-        });
+        this.plannedBooks = this.plannedBooks.map(plannedBook => {
+          return {
+            ...plannedBook,
+            planedDate: moment(plannedBook.planedDate).calendar(),
+            returnedDate: moment(plannedBook.planedDate).add({days: 2}).calendar(),
+          }
+        })
       });
-    }, 1000);
+    }, 500);
   }
 
   private fetchAllTakenBooks() {
     setTimeout(() => {
       this.bookingService.getAllTakenBooks().subscribe((takenBooks) => {
         this.takenBooks = takenBooks.reverse();
-        zip(
-          takenBooks.map((TBook) => this.booksService.getBook(TBook.bookId))
-        ).subscribe((books) => {
-          books.forEach((book, index) => {
-            this.takenBooks[index].bookTitle = book.bookTitle;
-            this.takenBooks[index].takenDate = moment(
-              this.takenBooks[index].takenDate
-            ).calendar();
-            this.takenBooks[index].returnedDate = moment(
-              this.takenBooks[index].returnedDate
-            ).calendar();
-            if (moment().isAfter(this.takenBooks[index].returnedDate)) {
-              this.takenBooks[index].fine =
-                this.takenBooks[index].fine *
-                moment().diff(this.takenBooks[index].returnedDate, 'days');
-            } else {
-              this.takenBooks[index].fine = 0;
-            }
-            // this.takenBooks[index].fine = (moment() - moment(this.takenBooks[index].returnedDate)).calendar();
-          });
-        });
+        this.takenBooks = takenBooks.map(takenBook => {
+          return {
+            ...takenBook,
+            takenDate: moment(takenBook.takenDate).calendar(),
+            returnedDate: moment(takenBook.returnedDate).calendar(),
+          }
+        })
       });
-    }, 1000);
+    }, 500);
   }
 
   cancelBook(id: string) {

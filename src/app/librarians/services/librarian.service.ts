@@ -25,7 +25,7 @@ export interface BookingModel {
   readonly status: string;
   fine: number;
   readonly issuer: string | null;
-  bookTitle: string | null;
+  bookName: string | null;
   readonly __v: 0;
 }
 

@@ -31,34 +31,8 @@ export class ReturnsComponent implements OnInit {
         this.filteredBookings = books.sort((book1, book2) =>
           book1.userId < book2.userId ? 1 : -1
         );
-        zip(
-          this.bookings.map((PBook) =>
-            this.librarianService.getBook(PBook.bookId)
-          )
-        ).subscribe((books) => {
-          books.forEach((book, index) => {
-            this.filteredBookings[index].bookTitle = book.bookTitle;
-            this.filteredBookings[index].takenDate = moment(
-              this.filteredBookings[index].takenDate
-            ).calendar();
-            this.filteredBookings[index].returnedDate = moment(
-              this.filteredBookings[index].returnedDate
-            ).calendar();
-            // Calculating fine
-            if (moment().isAfter(this.filteredBookings[index].returnedDate)) {
-              this.filteredBookings[index].fine =
-                this.filteredBookings[index].fine *
-                moment().diff(
-                  this.filteredBookings[index].returnedDate,
-                  'days'
-                );
-            } else {
-              this.filteredBookings[index].fine = 0;
-            }
-          });
-        });
       });
-    }, 1500);
+    }, 500);
   }
 
   filterData() {

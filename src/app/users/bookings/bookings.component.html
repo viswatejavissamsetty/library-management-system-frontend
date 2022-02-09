@@ -15,7 +15,7 @@
         <tbody>
           <tr *ngFor="let plannedBook of plannedBooks; let i = index;">
             <th scope="row">{{i + 1}}</th>
-            <td>{{plannedBook.bookTitle}}</td>
+            <td>{{plannedBook.bookName}}</td>
             <td>{{plannedBook.planedDate}}</td>
             <td>{{plannedBook.returnedDate}}</td>
             <td>
@@ -42,7 +42,7 @@
         <tbody>
           <tr *ngFor="let takenBook of takenBooks; let i = index;" [ngClass]="{'table-danger': takenBook.fine > 0}">
             <th scope="row">{{i + 1}}</th>
-            <td>{{takenBook.bookTitle}}</td>
+            <td>{{takenBook.bookName}}</td>
             <td>{{takenBook.takenDate}}</td>
             <td>{{takenBook.returnedDate}}</td>
             <td>{{takenBook.fine}}</td>

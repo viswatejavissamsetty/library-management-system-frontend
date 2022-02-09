@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { zip } from 'rxjs';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import {
   BookingModel,
   LibrarianService,
@@ -17,7 +18,7 @@ export class ReturnsComponent implements OnInit {
 
   filterValue: string = '';
 
-  constructor(private librarianService: LibrarianService) {}
+  constructor(private librarianService: LibrarianService, private notificationsService: NotificationsService) {}
 
   ngOnInit(): void {
     this.fetchBookingData();
@@ -70,15 +71,14 @@ export class ReturnsComponent implements OnInit {
   returnBook(trackingId: string) {
     this.librarianService.returnBook(trackingId).subscribe(
       (data) => {
-        console.log(data);
         this.librarianService.openSnackBar(
           'Succesfully returned bood',
           'SUCCESS'
         );
+        this.notificationsService.notificationFetchControl.next(true);
         this.fetchBookingData();
       },
       (err) => {
-        console.error(err);
         this.librarianService.openSnackBar(err.error.message, 'DANGER');
       }
     );

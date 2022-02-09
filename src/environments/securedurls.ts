@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/';
+// const baseUrl = 'http://localhost:3000/';
 
 // export const urls = {
 //   // auth
@@ -23,6 +23,7 @@ const baseUrl = 'http://localhost:3000/';
 //   cancelBook: baseUrl + 'book-orders/cancel-book',
 //   // Notifications
 //   notifications: 'notifications',
+//   notificationsCount: 'api/notifications/count',
 // };
 
 export const urls = {
@@ -48,6 +49,7 @@ export const urls = {
   cancelBook: 'api/book-orders/cancel-book',
   // Notifications
   notifications: 'api/notifications',
+  notificationsCount: 'api/notifications/count',
 };
 
 export default urls;

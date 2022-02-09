@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
     if (this.loginData.valid) {
       this.loginService.login(this.loginData.value).subscribe(
         ({ access_token }) => {
-          console.log(access_token);
           sessionStorage.setItem('access_token', access_token);
           this.loginService.getUserProfile().subscribe(
             (data) => {

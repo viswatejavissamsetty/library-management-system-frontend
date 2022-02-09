@@ -44,8 +44,6 @@ export class NavigationComponent implements OnInit {
 
     this.router.events.subscribe((val: any) => {
       if (val instanceof NavigationEnd) {
-        console.log(val.urlAfterRedirects.indexOf('landing'));
-
         if (val.urlAfterRedirects.indexOf('landing') !== -1) {
           this.navigationEndVal = 1;
         } else if (val.urlAfterRedirects.indexOf('bookings') !== -1) {
@@ -58,13 +56,16 @@ export class NavigationComponent implements OnInit {
       }
     });
 
-    setInterval(() => {
-      this.notificationService
-        .getNumberOfUnReadNotifications()
-        .subscribe((data) => {
-          this.notificationCount = data;
-        });
-    }, 5000);
+    this.notificationService.notificationFetchControl.subscribe((data) => {
+      if (data) {
+        this.notificationService
+          .getNumberOfUnReadNotifications()
+          .subscribe((data) => {
+            this.notificationCount = data;
+          });
+        this.notificationService.notificationFetchControl.next(false);
+      }
+    });
   }
 
   logoutUser() {

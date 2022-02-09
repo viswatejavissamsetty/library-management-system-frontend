@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BooksService } from 'src/app/users/services/books.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-book-view',
@@ -15,6 +16,7 @@ export class BookViewComponent implements OnInit {
   constructor(
     private booksService: BooksService,
     private aRoute: ActivatedRoute,
+    private notificationsService: NotificationsService,
     private router: Router
   ) {}
 
@@ -28,6 +30,7 @@ export class BookViewComponent implements OnInit {
   takeBook() {
     this.booksService.planToTakeBook(this.bookDetails._id).subscribe(
       (data) => {
+        this.notificationsService.notificationFetchControl.next(true);
         this.booksService.openSnackBar('Book taken succesfully', 'SUCCESS');
         this.router.navigateByUrl('users/bookings');
       },

@@ -1,11 +1,12 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserProfileService } from './user-profile.service';
 
 const notifications = environment.urls.notifications;
+const notificationsCount = environment.urls.notificationsCount;
 
 export interface Notification {
   readonly _id: string;
@@ -21,6 +22,8 @@ export interface Notification {
   providedIn: 'root',
 })
 export class NotificationsService {
+  public notificationFetchControl = new BehaviorSubject(false);
+
   constructor(
     private http: HttpClient,
     private userProfileService: UserProfileService,
@@ -34,12 +37,8 @@ export class NotificationsService {
   }
 
   getNumberOfUnReadNotifications(): Observable<number> {
-    return new Observable<number>((observer) => {
-      this.getAllNotifications().subscribe((data) => {
-        observer.next(
-          data.filter((notification) => notification.status === 'UNREAD').length
-        );
-      });
+    return <Observable<number>>this.http.get(notificationsCount, {
+      params: { userId: this.userProfileService.getUserId() },
     });
   }
 
@@ -60,8 +59,8 @@ export class NotificationsService {
 
   openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
     const pannelClasses = {
-      DANGER: 'bg-danger',
-      SUCCESS: 'bg-success',
+      DANGER: 'text-danger',
+      SUCCESS: 'text-success',
       NORMAL: '',
     };
     this._snackBar.open(message, 'dismiss', {

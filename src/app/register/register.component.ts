@@ -59,7 +59,6 @@ export class RegisterComponent implements OnInit {
       })
       .subscribe(
         (data) => {
-          console.log(data);
           this.userProfileService.setUserData(data);
           this.userProfileService.openSnackBar(
             'Succesfully registered account',
@@ -68,7 +67,6 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['..', 'login']);
         },
         (err) => {
-          console.error(err);
           this.userProfileService.openSnackBar(err.error.message, 'DANGER');
         }
       );

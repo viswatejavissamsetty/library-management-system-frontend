@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingModel } from 'src/app/users/services/booking.service';
 import { zip } from 'rxjs';
 import * as moment from 'moment';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-bookings',
@@ -15,7 +16,7 @@ export class BookingsComponent implements OnInit {
 
   filterValue: string = '';
 
-  constructor(private librarianService: LibrarianService) {}
+  constructor(private librarianService: LibrarianService, private notificationsService: NotificationsService) {}
 
   ngOnInit(): void {
     this.fetchBookingData();
@@ -51,12 +52,11 @@ export class BookingsComponent implements OnInit {
   acceptBook(trackingId: string) {
     this.librarianService.takeBook(trackingId).subscribe(
       (data) => {
-        // console.log(data);
+        this.notificationsService.notificationFetchControl.next(true);
         this.librarianService.openSnackBar('Succesfully taken book', 'SUCCESS');
         this.fetchBookingData();
       },
       (err) => {
-        console.error(err);
         this.librarianService.openSnackBar(err.error.message, 'DANGER');
       }
     );
@@ -65,7 +65,7 @@ export class BookingsComponent implements OnInit {
   cancelBook(id: string) {
     this.librarianService.cancelBook(id).subscribe(
       (data) => {
-        // console.log(data);
+        this.notificationsService.notificationFetchControl.next(true);
         this.librarianService.openSnackBar(
           'Succesfully cancelled book',
           'SUCCESS'
@@ -73,7 +73,6 @@ export class BookingsComponent implements OnInit {
         this.fetchBookingData();
       },
       (err) => {
-        console.error(err);
         this.librarianService.openSnackBar(err.error.message, 'DANGER');
       }
     );

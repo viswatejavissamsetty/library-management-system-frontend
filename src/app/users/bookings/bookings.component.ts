@@ -1,3 +1,4 @@
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { zip } from 'rxjs';
@@ -15,7 +16,8 @@ export class BookingsComponent implements OnInit {
 
   constructor(
     private bookingService: BookingService,
-    private booksService: BooksService
+    private booksService: BooksService,
+    private notificationsService: NotificationsService
   ) {}
 
   ngOnInit(): void {
@@ -78,11 +80,11 @@ export class BookingsComponent implements OnInit {
   cancelBook(id: string) {
     this.bookingService.cancelBook(id).subscribe(
       (data) => {
-        // console.log(data);
         this.bookingService.openSnackBar(
           `Book cancelled succesfully`,
           'SUCCESS'
         );
+        this.notificationsService.notificationFetchControl.next(true);
         this.fetchAllPlannedBooks();
       },
       (err) => {

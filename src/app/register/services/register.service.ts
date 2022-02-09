@@ -40,8 +40,8 @@ export class RegisterService {
 
   openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
     const pannelClasses = {
-      DANGER: 'bg-danger',
-      SUCCESS: 'bg-success',
+      DANGER: 'text-danger',
+      SUCCESS: 'text-success',
       NORMAL: '',
     };
     this._snackBar.open(message, 'dismiss', {

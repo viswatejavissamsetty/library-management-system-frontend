@@ -1,6 +1,7 @@
 import { LibrarianService } from './../../services/librarian.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-new-book',
@@ -26,7 +27,8 @@ export class NewBookComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private librarianService: LibrarianService
+    private librarianService: LibrarianService,
+    private notificationsService: NotificationsService
   ) {
     this.newBookFormData = fb.group({
       bookTitle: ['', Validators.required],
@@ -45,10 +47,7 @@ export class NewBookComponent implements OnInit {
   ngOnInit(): void {}
 
   addImage(event: any) {
-    this.image = event.target.files[0]
-    // this.newBookFormData.patchValue({
-    //   image: event.target.files[0],
-    // });
+    this.image = event.target.files[0];
   }
 
   submitForm() {
@@ -56,15 +55,14 @@ export class NewBookComponent implements OnInit {
       this.librarianService.newBook(this.newBookFormData.value, this.image).subscribe(
         (data) => {
           if(data){
+            this.notificationsService.notificationFetchControl.next(true);
             this.librarianService.openSnackBar("Successfully added book", "SUCCESS")
           }
         },
         (err) => {
-          console.error(err);
           this.librarianService.openSnackBar(err.error.message, "DANGER");
         }
       );
     }
-    console.log(this.newBookFormData);
   }
 }

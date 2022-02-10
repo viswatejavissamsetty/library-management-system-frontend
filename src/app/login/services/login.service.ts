@@ -48,11 +48,6 @@ export class LoginService {
 
   getUserProfile(): Observable<UserProfileDataType> {
     return <Observable<UserProfileDataType>>this.http.get(profile);
-    // return <Observable<UserProfileDataType>>this.http.get(profile, {
-    //   headers: {
-    //     Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
-    //   },
-    // });
   }
 
   setUserData(userdata: any) {

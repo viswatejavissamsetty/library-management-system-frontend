@@ -1,7 +1,7 @@
 <div class="container mt-1">
   <div class="card">
     <div class="card-header">
-      <h1 class="text-center font-monospace my-3">Add new Book In Library</h1>
+      <h1 class="text-center font-monospace my-3">Add New Book In Library</h1>
     </div>
     <div class="card-body">
       <div class="row">
@@ -40,7 +40,6 @@
                 ({{newBookFormData.value.fine}})</label>
               <input type="range" class="form-range" min="0" max="10" step="1" id="fine" formControlName="fine"
                 aria-describedby="newBook">
-              <!-- <input type="number" id="fine" formControlName="fine" class="form-control" min="0" max="10"> -->
             </div>
             <div class="form-group col-12">
               <label for="totalNumberOfBooks">Total number of Books <span class="text-danger">*</span></label>
@@ -57,7 +56,6 @@
             <div class="form-group col-12">
               <label for="ratings">Ratings <span class="text-danger">*</span> -
                 ({{newBookFormData.value.ratings}})</label>
-              <!-- <input type="number" id="ratings" formControlName="ratings" class="form-control" min="0" step="0.1" max="5"> -->
               <input type="range" class="form-range" min="0" max="5" step="0.1" id="ratings" formControlName="ratings"
                 aria-describedby="newBook">
             </div>
@@ -66,7 +64,6 @@
               <label for="image">Book Image <span class="text-danger">*</span></label>
               <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" formControlName="image"
                 class="form-control" aria-describedby="newBook" (change)="addImage($event)">
-              <!-- <img [src]="newBookFormData.value.image" alt="No Image attached" width="200px" height="300px" *ngIf="newBookFormData.value.image"> -->
             </div>
           </form>
         </div>

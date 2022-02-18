@@ -7,15 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  selectedTab = 1;
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  changeSelectedTab(tab: number){
-    this.selectedTab = tab;
   }
 
 }

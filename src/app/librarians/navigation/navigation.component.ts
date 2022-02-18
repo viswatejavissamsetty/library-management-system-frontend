@@ -13,8 +13,6 @@ export class NavigationComponent implements OnInit {
   userName: string = 'User';
   notificationCount: number = 0;
 
-  navigationEndVal: number = 0;
-
   constructor(
     private usersProfileService: UserProfileService,
     private notificationService: NotificationsService,
@@ -29,26 +27,6 @@ export class NavigationComponent implements OnInit {
         this.userName = userData.nickName;
       } else {
         this.userName = userData.firstName + ' ' + userData.lastName;
-      }
-    });
-
-    if (window.location.href.indexOf('landing') !== -1) {
-      this.navigationEndVal = 1;
-    } else if (window.location.href.indexOf('notifications') !== -1) {
-      this.navigationEndVal = 2;
-    } else {
-      this.navigationEndVal = 0;
-    }
-
-    this.router.events.subscribe((val: any) => {
-      if (val instanceof NavigationEnd) {
-        if (val.urlAfterRedirects.indexOf('landing') !== -1) {
-          this.navigationEndVal = 1;
-        } else if (val.urlAfterRedirects.indexOf('notifications') !== -1) {
-          this.navigationEndVal = 2;
-        } else {
-          this.navigationEndVal = 0;
-        }
       }
     });
 

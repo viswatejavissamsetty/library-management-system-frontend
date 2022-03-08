@@ -43,7 +43,7 @@ export class UserProfileService {
 
   setUserData(data: any) {
     this.userProfileData = data;
-    console.log(this.userProfileData);
+    // console.table(this.userProfileData);
   }
 
   getUserData(): Observable<UserProfileDataType> {

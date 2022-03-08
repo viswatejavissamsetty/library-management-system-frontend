@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: 'books/:book', component: BookViewComponent },
       { path: 'notifications', component: NotificationsComponent },
       { path: '', redirectTo: 'landing', pathMatch: 'full' },
-      { path: '**', component: LandingComponent },
+      { path: '**', redirectTo: 'landing' },
     ],
   },
 ];

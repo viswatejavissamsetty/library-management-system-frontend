@@ -37,6 +37,14 @@
           }
         }
       }
+    },
+    {
+      "label": "Start Project",
+      "type": "shell",
+      "command": "npm run start-project",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
     }
   ]
 }

@@ -67,28 +67,28 @@ export class LibrarianService {
   ) {}
 
   getAllPlannedBooks(): Observable<BookingModel[]> {
-    const userId = this.userProfileService.getUserId();
+    const userId = this.userProfileService.userId;
     return <Observable<BookingModel[]>>(
       this.http.get(getAllPlannedBooks, { params: { userId } })
     );
   }
 
   getAllTakenBooks(): Observable<BookingModel[]> {
-    const userId = this.userProfileService.getUserId();
+    const userId = this.userProfileService.userId;
     return <Observable<BookingModel[]>>(
       this.http.get(getAllTakenBooks, { params: { userId } })
     );
   }
 
   takeBook(trackingId: string): Observable<any> {
-    const librarianId = this.userProfileService.getUserId();
+    const librarianId = this.userProfileService.userId;
     return <Observable<any>>(
       this.http.patch(takeBook, { librarianId, trackingId })
     );
   }
 
   returnBook(trackingId: string): Observable<any> {
-    const librarianId = this.userProfileService.getUserId();
+    const librarianId = this.userProfileService.userId;
     return <Observable<any>>(
       this.http.patch(returnBook, { librarianId, trackingId })
     );

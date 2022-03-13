@@ -33,14 +33,14 @@ export class BookingService {
   ) {}
 
   getAllPlannedBooks(): Observable<BookingModel[]> {
-    const userId = this.userProfileService.getUserId();
+    const userId = this.userProfileService.userId;
     return <Observable<BookingModel[]>>(
       this.http.get(getAllUserPlannedBooks, { params: { userId } })
     );
   }
 
   getAllTakenBooks(): Observable<BookingModel[]> {
-    const userId = this.userProfileService.getUserId();
+    const userId = this.userProfileService.userId;
     return <Observable<BookingModel[]>>(
       this.http.get(getAllUserTakenBooks, { params: { userId } })
     );

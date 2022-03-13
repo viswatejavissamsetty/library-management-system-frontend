@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const profile = environment.urls.profile;
@@ -32,11 +32,11 @@ type UserProfileDataType = {
 })
 export class UserProfileService {
   userProfileData!: UserProfileDataType;
-  private userId: string = '';
+  private _userId: string = '';
 
   constructor(private http: HttpClient) {
     this.getUserData().subscribe((userProfile) => {
-      this.userId = userProfile.idCardNumber;
+      this._userId = userProfile.idCardNumber;
       this.userProfileData = userProfile;
     });
   }
@@ -50,7 +50,12 @@ export class UserProfileService {
     return <Observable<UserProfileDataType>>this.http.get(profile);
   }
 
-  getUserId(): string {
-    return this.userId;
+  get userId(): string {
+    if (!this._userId) {
+      lastValueFrom(this.http.get(profile)).then((data: any) => {
+        this._userId = data.idCardNumber;
+      });
+    }
+    return this._userId;
   }
 }

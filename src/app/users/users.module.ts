@@ -15,6 +15,7 @@ import { BookViewComponent } from './landing/books/book-view/book-view.component
 import { QrCodeModule } from 'ng-qrcode';
 import { BookingService } from './services/booking.service';
 import { SnackbarService } from '../shared/services/snackbar.service';
+import { NotificationsService } from '../shared/services/notifications.service';
 
 @NgModule({
   declarations: [
@@ -34,4 +35,10 @@ import { SnackbarService } from '../shared/services/snackbar.service';
     SnackbarService,
   ],
 })
-export class UsersModule {}
+export class UsersModule {
+  constructor(notificationsService: NotificationsService) {
+    setTimeout(() => {
+      notificationsService.notificationFetchControl.next(true);
+    }, 1000);
+  }
+}

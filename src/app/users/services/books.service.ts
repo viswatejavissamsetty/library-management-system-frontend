@@ -47,7 +47,7 @@ export class BooksService {
   }
 
   planToTakeBook(bookId: string): Observable<any> {
-    const userId = this.userProfileService.getUserId();
+    const userId = this.userProfileService.userId;
     return <Observable<any>>this.http.post(planToTakeBook, { bookId, userId });
   }
 }

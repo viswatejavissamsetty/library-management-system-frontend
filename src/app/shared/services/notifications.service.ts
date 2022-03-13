@@ -31,13 +31,13 @@ export class NotificationsService {
 
   getAllNotifications(): Observable<Notification[]> {
     return <Observable<Notification[]>>this.http.get(notifications, {
-      params: { userId: this.userProfileService.getUserId() },
+      params: { userId: this.userProfileService.userId },
     });
   }
 
   getNumberOfUnReadNotifications(): Observable<number> {
     return <Observable<number>>this.http.get(notificationsCount, {
-      params: { userId: this.userProfileService.getUserId() },
+      params: { userId: this.userProfileService.userId },
     });
   }
 

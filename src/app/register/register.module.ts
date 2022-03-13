@@ -8,8 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterService } from './services/register.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HeadersInterceptor } from '../headers.interceptor';
 import { SnackbarService } from '../shared/services/snackbar.service';
 
 @NgModule({

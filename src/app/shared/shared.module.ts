@@ -11,8 +11,8 @@ import { SnackbarService } from './services/snackbar.service';
 
 @NgModule({
   declarations: [NotificationsComponent],
-  imports: [CommonModule, FormsModule],
-  providers: [UserProfileService, NotificationsService],
+  imports: [CommonModule, FormsModule, MatSnackBarModule],
+  providers: [UserProfileService, NotificationsService, SnackbarService],
   exports: [
     CommonModule,
     ReactiveFormsModule,
@@ -25,16 +25,7 @@ export class SharedModule {
   static forRoot() {
     return {
       ngModule: SharedModule,
-      providers: [
-        UserProfileService,
-        NotificationsService,
-        SnackbarService,
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: HeadersInterceptor,
-          multi: true,
-        },
-      ],
+      providers: [UserProfileService, NotificationsService, SnackbarService],
     };
   }
 }

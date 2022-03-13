@@ -16,6 +16,7 @@ import { BookItemComponent } from './landing/books/book-item/book-item.component
 import { BookViewComponent } from './landing/books/book-view/book-view.component';
 import { QrCodeModule } from 'ng-qrcode';
 import { BookingService } from './services/booking.service';
+import { SnackbarService } from '../shared/services/snackbar.service';
 
 @NgModule({
   declarations: [
@@ -27,16 +28,12 @@ import { BookingService } from './services/booking.service';
     BookItemComponent,
     BookViewComponent,
   ],
-  imports: [SharedModule, UsersRoutingModule, QrCodeModule],
+  imports: [SharedModule, UsersRoutingModule, QrCodeModule, CommonModule],
   providers: [
     UserProfileService,
     BooksService,
     BookingService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HeadersInterceptor,
-      multi: true,
-    },
+    SnackbarService,
   ],
 })
 export class UsersModule {}

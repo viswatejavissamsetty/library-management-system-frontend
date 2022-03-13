@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RegisterService } from './services/register.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeadersInterceptor } from '../headers.interceptor';
+import { SnackbarService } from '../shared/services/snackbar.service';
 
 @NgModule({
   declarations: [RegisterComponent],
@@ -20,13 +21,6 @@ import { HeadersInterceptor } from '../headers.interceptor';
     MatFormFieldModule,
     MatButtonModule,
   ],
-  providers: [
-    RegisterService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HeadersInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [RegisterService, SnackbarService],
 })
 export class RegisterModule {}

@@ -7,18 +7,11 @@ import { SharedModule } from '../shared/shared.module';
 import { UserProfileService } from '../shared/services/user-profile.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeadersInterceptor } from '../headers.interceptor';
+import { SnackbarService } from '../shared/services/snackbar.service';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [LoginRoutingModule, SharedModule],
-  providers: [
-    LoginService,
-    UserProfileService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HeadersInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [LoginService, UserProfileService, SnackbarService],
 })
 export class LoginModule {}

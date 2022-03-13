@@ -20,20 +20,9 @@ import { NewBookComponent } from './landing/new-book/new-book.component';
     LandingComponent,
     BookingsComponent,
     ReturnsComponent,
-    NewBookComponent
+    NewBookComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    LibrariansRoutingModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HeadersInterceptor,
-      multi: true,
-    },
-    LibrarianService
-  ]
+  imports: [CommonModule, SharedModule, LibrariansRoutingModule],
+  providers: [LibrarianService],
 })
-export class LibrariansModule { }
+export class LibrariansModule {}

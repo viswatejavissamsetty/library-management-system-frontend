@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { UserProfileService } from 'src/app/shared/services/user-profile.service';
 
@@ -16,8 +16,7 @@ export class NavigationComponent implements OnInit {
   constructor(
     private usersProfileService: UserProfileService,
     private notificationService: NotificationsService,
-    private router: Router,
-    private aRoute: ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit(): void {

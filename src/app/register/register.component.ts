@@ -11,10 +11,26 @@ import { RegisterService } from './services/register.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  isLinear = true; // TODO: Need to change it to true
+  isLinear = true;
   basicFormGroup: FormGroup;
   securityInformationFormGroup: FormGroup;
   addressDetailsFormGroup: FormGroup;
+  branches = [
+    'ECE',
+    'CSE',
+    'EEE',
+    'CIVIL',
+    'MECH',
+    'IT',
+    'AERONOTICAL',
+    'AEROSPACE',
+    'CHEMICAL',
+    'CSIT',
+    'CSAI',
+    'CSIOT',
+    'CSML',
+    'OTHER',
+  ];
 
   confirm = false;
 

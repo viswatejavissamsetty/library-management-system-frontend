@@ -89,7 +89,11 @@
               </div>
               <div class="col-6 form-group">
                 <label for="branch">Branch <span class="text-danger">*</span></label>
-                <input type="text" name="branch" id="branch" class="form-control" formControlName="branch">
+                <!-- <input type="text" name="branch" id="branch" class="form-control" formControlName="branch"> -->
+                <select name="branch" id="branch" class="form-control" formControlName="branch">
+                  <option value="" selected disabled>--select--</option>
+                  <option *ngFor="let branch of branches" [value]="branch">{{branch}}</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="dateOfBirth">Date Of Birth <span class="text-danger">*</span></label>
@@ -109,32 +113,32 @@
             <div class="col-12 text-center">Basic Information</div>
             <div class="col-12">
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">ID Number</div>
                     <div class="col">{{basicFormGroup.value.idCardNumber}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">First Name</div>
                     <div class="col">{{basicFormGroup.value.firstName}}</div>
                   </div>
                 </a>
-                <a href="#" *ngIf="basicFormGroup.value.middleName"
+                <a *ngIf="basicFormGroup.value.middleName"
                   class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Middle Name</div>
                     <div class="col">{{basicFormGroup.value.middleName}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Last Name</div>
                     <div class="col">{{basicFormGroup.value.lastName}}</div>
                   </div>
                 </a>
-                <a href="#" *ngIf="basicFormGroup.value.nickName"
+                <a *ngIf="basicFormGroup.value.nickName"
                   class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Nick Name</div>
@@ -146,13 +150,13 @@
             <div class="col-12 text-center">Security Information</div>
             <div class="col-12">
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Email</div>
                     <div class="col">{{securityInformationFormGroup.value.email}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Mobile Number</div>
                     <div class="col">{{securityInformationFormGroup.value.mobileNumber}}</div>
@@ -163,56 +167,56 @@
             <div class="col-12 text-center">Address Information</div>
             <div class="col-12">
               <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Address Line 1</div>
                     <div class="col">{{addressDetailsFormGroup.value.addressLine1}}</div>
                   </div>
                 </a>
-                <a href="#" *ngIf="addressDetailsFormGroup.value.addressLine2"
+                <a *ngIf="addressDetailsFormGroup.value.addressLine2"
                   class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Address Line 2</div>
                     <div class="col">{{addressDetailsFormGroup.value.addressLine2}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">City</div>
                     <div class="col">{{addressDetailsFormGroup.value.city}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">State</div>
                     <div class="col">{{addressDetailsFormGroup.value.state}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Village</div>
                     <div class="col">{{addressDetailsFormGroup.value.village}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Pincode</div>
                     <div class="col">{{addressDetailsFormGroup.value.pincode}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Country</div>
                     <div class="col">{{addressDetailsFormGroup.value.country}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Branch</div>
                     <div class="col">{{addressDetailsFormGroup.value.branch}}</div>
                   </div>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                <a class="list-group-item list-group-item-action list-group-item-light">
                   <div class="row">
                     <div class="col">Date of Birth</div>
                     <div class="col">{{addressDetailsFormGroup.value.dateOfBirth}}</div>
@@ -220,18 +224,22 @@
                 </a>
               </div>
             </div>
+          </div>
+          <div>
             <div class="col-12 d-flex mt-3 justify-content-center align-items-center">
               <div class="form-group">
-                <label for="confirm text-dark">
-                  <input type="checkbox" name="confirm" id="confirm" [(ngModel)]="confirm"> I am accepting to register here.
+                <label for="confirm" class="text-dark">
+                  <input class="form-check-input" type="checkbox" name="confirm" id="confirm" [(ngModel)]="confirm"> I
+                  am accepting to register
+                  here.
                 </label>
               </div>
             </div>
-          </div>
-          <div class="mt-4 d-flex justify-content-between">
-            <button mat-raised-button matStepperPrevious color="primary">Back</button>
-            <button mat-raised-button (click)="stepper.reset()" color="warn">Reset</button>
-            <button mat-raised-button color="primary" [disabled]="!confirm" (click)="registerUser()">Register</button>
+            <div class="mt-4 d-flex justify-content-between">
+              <button mat-raised-button matStepperPrevious color="primary">Back</button>
+              <button mat-raised-button (click)="stepper.reset()" color="warn">Reset</button>
+              <button mat-raised-button color="primary" [disabled]="!confirm" (click)="registerUser()">Register</button>
+            </div>
           </div>
         </mat-step>
       </mat-stepper>

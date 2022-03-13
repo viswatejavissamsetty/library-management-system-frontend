@@ -1,39 +1,38 @@
 <form class="d-flex justify-content-center my-3">
-    <input type="search" name="search" id="search" class="form-control" placeholder="Search" [(ngModel)]="filterValue"
-      style="max-width: 300px;" (keydown.enter)="filterData()">
-  </form>
-  
-  <div>
-    <table class="table table-bordered table-hover" *ngIf="filteredBookings.length">
-      <thead>
-        <tr class="table-primary">
-          <th scope="col">#</th>
-          <th scope="col">User ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Taken Date</th>
-          <th scope="col">Return Date</th>
-          <th scope="col">Fine</th>
-          <th scope="col">Issuer</th>
-          <th scope="col" class="text-center">Controls</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let booking of filteredBookings; let i = index" [ngClass]="{'table-danger': booking.fine > 0}">
-          <th scope="row">{{i+1}}</th>
-          <td>{{booking.userId}}</td>
-          <td>{{booking.bookName}}</td>
-          <td>{{booking.takenDate}}</td>
-          <td>{{booking.returnedDate}}</td>
-          <td [ngClass]="{'bg-danger': booking.fine > 0}">{{booking.fine}}</td>
-          <td>{{booking.issuer}}</td>
-          <td>
-            <div class="d-flex justify-content-evenly">
-              <button class="btn btn-outline-primary" (click)="returnBook(booking._id)">Return Book</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <h1 *ngIf="filteredBookings.length === 0" class="text-center font-monospace">No Books to Return</h1>
-  </div>
-  
+  <input type="search" name="search" id="search" class="form-control" placeholder="Search with BookId or UserId"
+    [(ngModel)]="filterValue" style="max-width: 300px;" (keydown.enter)="filterData()">
+</form>
+
+<div>
+  <table class="table table-bordered table-hover" *ngIf="filteredBookings.length">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">#</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Taken At</th>
+        <th scope="col">Return At</th>
+        <th scope="col">Fine</th>
+        <th scope="col">Issuer</th>
+        <th scope="col" class="text-center">Controls</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of filteredBookings; let i = index" [ngClass]="{'table-danger': booking.fine > 0}">
+        <th scope="row">{{i+1}}</th>
+        <td>{{booking.userId}}</td>
+        <td>{{booking.bookName}}</td>
+        <td>{{booking.takenDate}}</td>
+        <td>{{booking.returnedDate}}</td>
+        <td [ngClass]="{'bg-danger': booking.fine > 0}">{{booking.fine}}</td>
+        <td>{{booking.issuer}}</td>
+        <td>
+          <div class="d-flex justify-content-evenly">
+            <button class="btn btn-outline-primary" (click)="returnBook(booking._id)">Return Book</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 *ngIf="filteredBookings.length === 0" class="text-center font-monospace">No Books to Return</h1>
+</div>

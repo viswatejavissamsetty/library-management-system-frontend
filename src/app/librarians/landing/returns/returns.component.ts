@@ -33,9 +33,13 @@ export class ReturnsComponent implements OnInit {
     setTimeout(() => {
       this.librarianService.getAllTakenBooks().subscribe((books) => {
         this.bookings = books;
-        this.filteredBookings = books.sort((book1, book2) =>
-          book1.userId < book2.userId ? 1 : -1
-        );
+        this.filteredBookings = books
+          .map((booking) => {
+            booking.returnedDate = moment(booking.returnedDate).fromNow();
+            booking.takenDate = moment(booking.takenDate).fromNow();
+            return booking;
+          })
+          .sort((book1, book2) => (book1.userId < book2.userId ? 1 : -1));
       });
     }, 500);
   }

@@ -50,6 +50,7 @@
               <label for="category">Category <span class="text-danger">*</span></label>
               <select name="category" id="category" formControlName="category" class="form-control"
                 aria-describedby="newBook">
+                <option value="" selected disabled>--select--</option>
                 <option *ngFor="let category of categoryOptions" [value]=[category]>{{category}}</option>
               </select>
             </div>

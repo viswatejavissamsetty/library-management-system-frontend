@@ -14,13 +14,18 @@ export class NewBookComponent implements OnInit {
     'ECE',
     'CSE',
     'EEE',
+    'CIVIL',
     'MECH',
     'IT',
     'AERONOTICAL',
     'AEROSPACE',
     'CHEMICAL',
+    'CSIT',
+    'CSAI',
+    'CSIOT',
+    'CSML',
+    'OTHER',
     'GENERAL',
-    'CIVIL',
   ].sort((cat1, cat2) => (cat1 > cat2 ? 1 : -1));
   image: File | null = null;
 

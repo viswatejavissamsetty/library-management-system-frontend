@@ -2,6 +2,7 @@ import { LibrarianService } from './../../services/librarian.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-new-book',
@@ -28,7 +29,8 @@ export class NewBookComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private librarianService: LibrarianService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private snackbarService: SnackbarService
   ) {
     this.newBookFormData = fb.group({
       bookTitle: ['', Validators.required],
@@ -51,18 +53,23 @@ export class NewBookComponent implements OnInit {
   }
 
   submitForm() {
-    if(this.image){
-      this.librarianService.newBook(this.newBookFormData.value, this.image).subscribe(
-        (data) => {
-          if(data){
-            this.notificationsService.notificationFetchControl.next(true);
-            this.librarianService.openSnackBar("Successfully added book", "SUCCESS")
+    if (this.image) {
+      this.librarianService
+        .newBook(this.newBookFormData.value, this.image)
+        .subscribe(
+          (data) => {
+            if (data) {
+              this.notificationsService.notificationFetchControl.next(true);
+              this.snackbarService.openSnackBar(
+                'Successfully added book',
+                'SUCCESS'
+              );
+            }
+          },
+          (err) => {
+            this.snackbarService.openSnackBar(err.error.message, 'DANGER');
           }
-        },
-        (err) => {
-          this.librarianService.openSnackBar(err.error.message, "DANGER");
-        }
-      );
+        );
     }
   }
 }

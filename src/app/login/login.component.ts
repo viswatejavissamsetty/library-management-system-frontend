@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../shared/services/snackbar.service';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private snackbarService: SnackbarService
   ) {
     this.loginData = fb.group({
       username: ['', Validators.required],
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
         },
         (err) => {
           console.error(err);
-          this.loginService.openSnackBar(
+          this.snackbarService.openSnackBar(
             'Invalid Creadentials, Please check username or password',
             'DANGER'
           );
@@ -53,7 +55,7 @@ export class LoginComponent implements OnInit {
       );
     } else {
       console.error('Invalid form data');
-      this.loginService.openSnackBar(
+      this.snackbarService.openSnackBar(
         'Invalid Form data, Please check data once',
         'DANGER'
       );

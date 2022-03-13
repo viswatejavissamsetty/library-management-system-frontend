@@ -35,8 +35,7 @@ type UserProfileDataType = {
 export class LoginService {
   constructor(
     private http: HttpClient,
-    private sharedService: UserProfileService,
-    private _snackBar: MatSnackBar
+    private userProfileService: UserProfileService
   ) {}
 
   login(body: {
@@ -51,20 +50,6 @@ export class LoginService {
   }
 
   setUserData(userdata: any) {
-    this.sharedService.setUserData(userdata);
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
-    });
+    this.userProfileService.setUserData(userdata);
   }
 }

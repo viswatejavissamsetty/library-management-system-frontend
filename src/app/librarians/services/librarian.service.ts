@@ -14,7 +14,6 @@ const newBook = environment.urls.newBook;
 
 const book = environment.urls.book;
 
-
 export interface BookingModel {
   readonly _id: string;
   readonly userId: string;
@@ -64,8 +63,7 @@ interface BookType {
 export class LibrarianService {
   constructor(
     private http: HttpClient,
-    private userProfileService: UserProfileService,
-    private _snackBar: MatSnackBar
+    private userProfileService: UserProfileService
   ) {}
 
   getAllPlannedBooks(): Observable<BookingModel[]> {
@@ -95,7 +93,7 @@ export class LibrarianService {
       this.http.patch(returnBook, { librarianId, trackingId })
     );
   }
-  
+
   cancelBook(id: string): Observable<any> {
     return <Observable<any>>this.http.delete(cancelBook, { params: { id } });
   }
@@ -120,20 +118,6 @@ export class LibrarianService {
       params: {
         bookId,
       },
-    });
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
     });
   }
 }

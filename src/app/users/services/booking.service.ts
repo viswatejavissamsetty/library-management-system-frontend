@@ -29,8 +29,7 @@ export interface BookingModel {
 export class BookingService {
   constructor(
     private http: HttpClient,
-    private userProfileService: UserProfileService,
-    private _snackBar: MatSnackBar
+    private userProfileService: UserProfileService
   ) {}
 
   getAllPlannedBooks(): Observable<BookingModel[]> {
@@ -49,19 +48,5 @@ export class BookingService {
 
   cancelBook(id: string): Observable<any> {
     return <Observable<any>>this.http.delete(cancelBook, { params: { id } });
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
-    });
   }
 }

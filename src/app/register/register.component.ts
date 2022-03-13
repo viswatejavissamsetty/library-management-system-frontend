@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../shared/services/snackbar.service';
 import { UserProfileService } from '../shared/services/user-profile.service';
 import { RegisterService } from './services/register.service';
 
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private registerService: RegisterService,
     private userProfileService: UserProfileService,
-    private router: Router
+    private router: Router,
+    private snackbarService: SnackbarService
   ) {
     this.basicFormGroup = this._formBuilder.group({
       idCardNumber: ['', Validators.required],
@@ -60,14 +62,14 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (data) => {
           this.userProfileService.setUserData(data);
-          this.userProfileService.openSnackBar(
+          this.snackbarService.openSnackBar(
             'Succesfully registered account',
             'SUCCESS'
           );
           this.router.navigate(['..', 'login']);
         },
         (err) => {
-          this.userProfileService.openSnackBar(err.error.message, 'DANGER');
+          this.snackbarService.openSnackBar(err.error.message, 'DANGER');
         }
       );
   }

@@ -31,8 +31,7 @@ export interface BookType {
 export class BooksService {
   constructor(
     private http: HttpClient,
-    private userProfileService: UserProfileService,
-    private _snackBar: MatSnackBar
+    private userProfileService: UserProfileService
   ) {}
 
   getAllBooks(): Observable<BookType[]> {
@@ -50,19 +49,5 @@ export class BooksService {
   planToTakeBook(bookId: string): Observable<any> {
     const userId = this.userProfileService.getUserId();
     return <Observable<any>>this.http.post(planToTakeBook, { bookId, userId });
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
-    });
   }
 }

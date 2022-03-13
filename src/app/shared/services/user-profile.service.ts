@@ -34,7 +34,7 @@ export class UserProfileService {
   userProfileData!: UserProfileDataType;
   private userId: string = '';
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
+  constructor(private http: HttpClient) {
     this.getUserData().subscribe((userProfile) => {
       this.userId = userProfile.idCardNumber;
       this.userProfileData = userProfile;
@@ -52,19 +52,5 @@ export class UserProfileService {
 
   getUserId(): string {
     return this.userId;
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
-    });
   }
 }

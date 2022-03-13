@@ -26,8 +26,7 @@ export class NotificationsService {
 
   constructor(
     private http: HttpClient,
-    private userProfileService: UserProfileService,
-    private _snackBar: MatSnackBar
+    private userProfileService: UserProfileService
   ) {}
 
   getAllNotifications(): Observable<Notification[]> {
@@ -55,19 +54,5 @@ export class NotificationsService {
     return <Observable<any>>(
       this.http.delete(notifications, { params: { notificationId } })
     );
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
-    });
   }
 }

@@ -7,7 +7,7 @@ import { HeadersInterceptor } from '../headers.interceptor';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { NotificationsService } from './services/notifications.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { SnackbarService } from './services/snackbar.service';
 
 @NgModule({
   declarations: [NotificationsComponent],
@@ -18,7 +18,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    MatSnackBarModule,
     NotificationsComponent,
   ],
 })
@@ -29,6 +28,7 @@ export class SharedModule {
       providers: [
         UserProfileService,
         NotificationsService,
+        SnackbarService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: HeadersInterceptor,

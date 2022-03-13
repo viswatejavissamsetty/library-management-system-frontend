@@ -5,6 +5,7 @@ import {
 } from '../../services/notifications.service';
 import * as moment from 'moment';
 import { zip } from 'rxjs';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-notifications',
@@ -14,10 +15,13 @@ import { zip } from 'rxjs';
 export class NotificationsComponent implements OnInit, AfterViewInit {
   notifications: Notification[] = [];
 
-  constructor(private notificationService: NotificationsService) {}
+  constructor(
+    private notificationService: NotificationsService,
+    private snackbarService: SnackbarService
+  ) {}
 
   ngOnInit(): void {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.notificationService.notificationFetchControl.next(true);
     }, 500);
   }
@@ -54,7 +58,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
     ).subscribe(
       (data) => {
         this.notificationService.notificationFetchControl.next(true);
-        this.notificationService.openSnackBar(
+        this.snackbarService.openSnackBar(
           `Succesfully marked ${data.length} notifications as ${status}`,
           'SUCCESS'
         );
@@ -62,7 +66,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       },
       (err) => {
         console.error(err);
-        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }
@@ -80,7 +84,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
     ).subscribe(
       (data) => {
         this.notificationService.notificationFetchControl.next(true);
-        this.notificationService.openSnackBar(
+        this.snackbarService.openSnackBar(
           `Succesfully marked ${data.length} notifications as ${status}`,
           'SUCCESS'
         );
@@ -88,7 +92,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       },
       (err) => {
         console.error(err);
-        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }
@@ -103,7 +107,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
     ).subscribe(
       (data) => {
         this.notificationService.notificationFetchControl.next(true);
-        this.notificationService.openSnackBar(
+        this.snackbarService.openSnackBar(
           `Succesfully deleted ${data.length} notifications`,
           'SUCCESS'
         );
@@ -111,7 +115,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       },
       (err) => {
         console.error(err);
-        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }
@@ -124,7 +128,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
     ).subscribe(
       (data) => {
         this.notificationService.notificationFetchControl.next(true);
-        this.notificationService.openSnackBar(
+        this.snackbarService.openSnackBar(
           `Succesfully deleted ${data.length} notifications`,
           'SUCCESS'
         );
@@ -132,7 +136,7 @@ export class NotificationsComponent implements OnInit, AfterViewInit {
       },
       (err) => {
         console.error(err);
-        this.notificationService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }

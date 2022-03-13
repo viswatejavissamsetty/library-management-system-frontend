@@ -2,6 +2,7 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 import { Component, OnInit } from '@angular/core';
 import { BookingModel, BookingService } from '../services/booking.service';
 import * as moment from 'moment';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-bookings',
@@ -14,7 +15,8 @@ export class BookingsComponent implements OnInit {
 
   constructor(
     private bookingService: BookingService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -26,13 +28,15 @@ export class BookingsComponent implements OnInit {
     setTimeout(() => {
       this.bookingService.getAllPlannedBooks().subscribe((plannedBooks) => {
         this.plannedBooks = plannedBooks.reverse();
-        this.plannedBooks = this.plannedBooks.map(plannedBook => {
+        this.plannedBooks = this.plannedBooks.map((plannedBook) => {
           return {
             ...plannedBook,
             planedDate: moment(plannedBook.planedDate).calendar(),
-            returnedDate: moment(plannedBook.planedDate).add({days: 2}).calendar(),
-          }
-        })
+            returnedDate: moment(plannedBook.planedDate)
+              .add({ days: 2 })
+              .calendar(),
+          };
+        });
       });
     }, 500);
   }
@@ -41,13 +45,13 @@ export class BookingsComponent implements OnInit {
     setTimeout(() => {
       this.bookingService.getAllTakenBooks().subscribe((takenBooks) => {
         this.takenBooks = takenBooks.reverse();
-        this.takenBooks = takenBooks.map(takenBook => {
+        this.takenBooks = takenBooks.map((takenBook) => {
           return {
             ...takenBook,
             takenDate: moment(takenBook.takenDate).calendar(),
             returnedDate: moment(takenBook.returnedDate).calendar(),
-          }
-        })
+          };
+        });
       });
     }, 500);
   }
@@ -55,7 +59,7 @@ export class BookingsComponent implements OnInit {
   cancelBook(id: string) {
     this.bookingService.cancelBook(id).subscribe(
       (data) => {
-        this.bookingService.openSnackBar(
+        this.snackbarService.openSnackBar(
           `Book cancelled succesfully`,
           'SUCCESS'
         );
@@ -64,7 +68,7 @@ export class BookingsComponent implements OnInit {
       },
       (err) => {
         console.error(err);
-        this.bookingService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }

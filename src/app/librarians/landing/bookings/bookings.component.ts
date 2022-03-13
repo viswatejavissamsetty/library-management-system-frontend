@@ -2,6 +2,7 @@ import { LibrarianService } from './../../services/librarian.service';
 import { Component, OnInit } from '@angular/core';
 import { BookingModel } from 'src/app/users/services/booking.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-bookings',
@@ -14,7 +15,11 @@ export class BookingsComponent implements OnInit {
 
   filterValue: string = '';
 
-  constructor(private librarianService: LibrarianService, private notificationsService: NotificationsService) {}
+  constructor(
+    private librarianService: LibrarianService,
+    private notificationsService: NotificationsService,
+    private snackbarService: SnackbarService
+  ) {}
 
   ngOnInit(): void {
     this.fetchBookingData();
@@ -27,15 +32,6 @@ export class BookingsComponent implements OnInit {
         this.filteredBookings = books.sort((book1, book2) =>
           book1.userId < book2.userId ? 1 : -1
         );
-        // zip(
-        //   this.bookings.map((PBook) =>
-        //     this.librarianService.getBook(PBook.bookId)
-        //   )
-        // ).subscribe((books) => {
-        //   books.forEach((book, index) => {
-        //     this.filteredBookings[index].bookTitle = book.bookTitle;
-        //   });
-        // });
       });
     }, 500);
   }
@@ -51,11 +47,11 @@ export class BookingsComponent implements OnInit {
     this.librarianService.takeBook(trackingId).subscribe(
       (data) => {
         this.notificationsService.notificationFetchControl.next(true);
-        this.librarianService.openSnackBar('Succesfully taken book', 'SUCCESS');
+        this.snackbarService.openSnackBar('Succesfully taken book', 'SUCCESS');
         this.fetchBookingData();
       },
       (err) => {
-        this.librarianService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }
@@ -64,14 +60,14 @@ export class BookingsComponent implements OnInit {
     this.librarianService.cancelBook(id).subscribe(
       (data) => {
         this.notificationsService.notificationFetchControl.next(true);
-        this.librarianService.openSnackBar(
+        this.snackbarService.openSnackBar(
           'Succesfully cancelled book',
           'SUCCESS'
         );
         this.fetchBookingData();
       },
       (err) => {
-        this.librarianService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }

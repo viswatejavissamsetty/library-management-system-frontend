@@ -32,23 +32,9 @@ const newUser = environment.urls.newUser;
   providedIn: 'root',
 })
 export class RegisterService {
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+  constructor(private http: HttpClient) {}
 
   registerUser(userData: any): Observable<RegisteredUserData> {
     return <Observable<RegisteredUserData>>this.http.post(newUser, userData);
-  }
-
-  openSnackBar(message: string, level: 'DANGER' | 'SUCCESS' | 'NORMAL') {
-    const pannelClasses = {
-      DANGER: 'text-danger',
-      SUCCESS: 'text-success',
-      NORMAL: '',
-    };
-    this._snackBar.open(message, 'dismiss', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-      panelClass: pannelClasses[level],
-    });
   }
 }

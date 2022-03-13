@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { zip } from 'rxjs';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import {
   BookingModel,
   LibrarianService,
@@ -18,7 +19,11 @@ export class ReturnsComponent implements OnInit {
 
   filterValue: string = '';
 
-  constructor(private librarianService: LibrarianService, private notificationsService: NotificationsService) {}
+  constructor(
+    private librarianService: LibrarianService,
+    private notificationsService: NotificationsService,
+    private snackbarService: SnackbarService
+  ) {}
 
   ngOnInit(): void {
     this.fetchBookingData();
@@ -45,7 +50,7 @@ export class ReturnsComponent implements OnInit {
   returnBook(trackingId: string) {
     this.librarianService.returnBook(trackingId).subscribe(
       (data) => {
-        this.librarianService.openSnackBar(
+        this.snackbarService.openSnackBar(
           'Succesfully returned bood',
           'SUCCESS'
         );
@@ -53,7 +58,7 @@ export class ReturnsComponent implements OnInit {
         this.fetchBookingData();
       },
       (err) => {
-        this.librarianService.openSnackBar(err.error.message, 'DANGER');
+        this.snackbarService.openSnackBar(err.error.message, 'DANGER');
       }
     );
   }
